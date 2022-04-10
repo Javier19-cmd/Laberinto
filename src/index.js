@@ -7,9 +7,11 @@ Instalaciones realizadas:
 
 Otras observaciones: 
 1. En el .gitignore se puso el node_modules, que nunca se tiene que subir.
-2. Para generar el archivo main.js en la carpeta dist, se puso en el package.json y en su apartado de scripts la instrucción "build": "webpack --mode development"
+2. Se escribió el npm run build para que se pueda correr en el navegador.
+3. Para generar el archivo main.js en la carpeta dist, se puso en el package.json y en su apartado de scripts la instrucción "build": "webpack --mode development"
 y se ejecutó el comando npm run build. En el .gitignore se puso que no se tiene que subir el main.js.
-
+4. Para recuperar el main.js se tiene que correr el npm run build.
+5. El "build": "webpack --mode production" es lo que se va para los clientes.
 */
 
 //import Header from './components/Header' //Importando el módulo de Header.
