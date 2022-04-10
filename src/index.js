@@ -21,15 +21,29 @@ y se ejecutó el comando npm run build. En el .gitignore se puso que no se tiene
 
 import Header from './components/Header.jsx' //Importando el módulo de Header.
 import {sum, sub} from './utils.js'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 //import ReactDOM from 'react-dom'
 import * as ReactDOMClient from 'react-dom/client' //Importando el ReactDOMClient.
-import css from './style.css'
+import css from './style.css' 
 
 const App = () => {
+
+    //Api: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
+
+    //useState sirve para modificar el estado de un componente.
+    const [laberinto, setLaberinto] = useState([]) //Se le pasa un array vacío porque va a ser el estado del maze; la variable laberinto va a ser el estado inicial del maze.
+                                                    //setLaberinto permite actualizar el estado del laberinto.
+    
+    console.log(laberinto)
+
+    //useEffect sirve para poder ver efectos secundarios en componentes.
+    useEffect(() => {
+
+    }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
+
     return(
         <>
-            <h1>App Content</h1>
+            <h1>Laberinto</h1>
         </>
     )
 }
