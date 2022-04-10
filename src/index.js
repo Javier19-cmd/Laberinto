@@ -25,9 +25,10 @@ import React, { useState, useEffect } from 'react'
 //import ReactDOM from 'react-dom'
 import * as ReactDOMClient from 'react-dom/client' //Importando el ReactDOMClient.
 import css from './style.css' 
+import axios from 'axios'
 
-const App = () => {
-
+function Laberinto () {
+    
     //Api: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
 
     //useState sirve para modificar el estado de un componente.
@@ -39,11 +40,45 @@ const App = () => {
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
 
+        //Función que manda a pedir el laberinto al API. Esta función va a hacer un pedido asincrónico. Va a tener un async y un await. 
+        //El async determina que la función va a tener un pedido asincrónico y cuando se hace el pedido, no se sabe cuánto va a tardar. En ese momento se pone un await
+        //para decirle que espere hasta que se haga la consulta.
+        const obtenerLaberinto = async() => {
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
+             const result = await axios.get(url) //Pedido con axios y get. Se pone await para que espere la respuesta.
+             //console.log(result.data) //Imprimiendo la data del API.
+            //Se desea guardar en actores.
+            //La función para actualizar actores es setLaberinto.
+            setLaberinto(result.data) //Se llama a setLaberinto y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
+        }
+
+        obtenerLaberinto() //Poniendo a funcionar la promesa.
+
+
     }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
+
+    return(
+        <div>
+            {laberinto.map(function(objeto, i) { 
+                
+                console.log(objeto)
+                
+               return <div key={i}>{objeto}</div>
+                
+            }
+            )}
+        </div>
+    )
+
+    //console.log(laberinto) //Imprimiendo el array del laberinto.
+}
+
+const App = () => {
 
     return(
         <>
             <h1>Laberinto</h1>
+            <Laberinto/>    
         </>
     )
 }
