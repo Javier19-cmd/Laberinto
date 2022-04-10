@@ -2,7 +2,7 @@
 Instalaciones realizadas: 
 
 1. Webpack: npm install webpack webpack-cli. Para reinstalar node_modules se corre npm install.
-2. 
+2. React: npm install react react-dom.
 
 
 Otras observaciones: 
@@ -14,15 +14,15 @@ y se ejecutó el comando npm run build. En el .gitignore se puso que no se tiene
 5. El "build": "webpack --mode production" es lo que se va para los clientes. El "build": "webpack --mode production" es para producción final de la página.
 */
 
-//import Header from './components/Header' //Importando el módulo de Header.
+import Header from './components/Header.js' //Importando el módulo de Header.
 import {sum, sub} from './utils.js'
 
 console.log('Hello from index.js')
 
-console.log('sum 2 + 2', sum(2,2)) //Suma de dos elementos.
+console.log('sum 2 + 2', sum(2,2))
 
-console.log('sub 2 - 2', sub(2,2)) //Resta de dos elementos.
+console.log('sum 2 - 2', sub(2,2))
 
-//const root = document.getElementById('root') //Accediento al root del html.
+const root = document.getElementById('root') //Jalando el root del index.html
 
-//Header(root, 'Hello world') //Mandando al root el hello world.
+Header(root, {title: 'Hello world'}) //Llamando al método Header que está en la referencia Header del archivo Header.js */
