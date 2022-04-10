@@ -3,7 +3,12 @@ Instalaciones realizadas:
 
 1. Webpack: npm install webpack webpack-cli. Para reinstalar node_modules se corre npm install.
 2. React: npm install react react-dom.
-
+3. Babel: npm install babel-loader @babel/core @babel/preset-react 
+4. Webpack para correr el código: npm install webpack-dev-server
+CSS: 
+5. npm install --save-dev style-loader
+6. npm install -D mini-css-extract-plugin
+7. npm install --save-dev css-loader
 
 Otras observaciones: 
 1. En el .gitignore se puso el node_modules, que nunca se tiene que subir.
@@ -14,15 +19,45 @@ y se ejecutó el comando npm run build. En el .gitignore se puso que no se tiene
 5. El "build": "webpack --mode production" es lo que se va para los clientes. El "build": "webpack --mode production" es para producción final de la página.
 */
 
-import Header from './components/Header.js' //Importando el módulo de Header.
+import Header from './components/Header.jsx' //Importando el módulo de Header.
 import {sum, sub} from './utils.js'
+import React from 'react'
+//import ReactDOM from 'react-dom'
+import * as ReactDOMClient from 'react-dom/client' //Importando el ReactDOMClient.
+import css from './style.css'
 
-console.log('Hello from index.js')
+const App = () => {
+    return(
+        <>
+            <h1>App Content</h1>
+        </>
+    )
+}
+
+
+//Creando la raíz del código.
+const root = ReactDOMClient.createRoot(
+    document.getElementById('root')
+  );
+  
+  //Enlazado
+  root.render(
+    <App/>
+  )
+
+/*
+ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+    
+)*/
+
+/*console.log('Hello from index.js')
 
 console.log('sum 2 + 2', sum(2,2))
 
-console.log('sum 2 - 2', sub(2,2))
+console.log('sum 2 - 2', sub(2,2))*/
 
-const root = document.getElementById('root') //Jalando el root del index.html
+// const root = document.getElementById('root') //Jalando el root del index.html
 
-Header(root, {title: 'Hello world'}) //Llamando al método Header que está en la referencia Header del archivo Header.js */
+// Header(root, {title: 'Hello world'}) //Llamando al método Header que está en la referencia Header del archivo Header.js */
