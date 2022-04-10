@@ -36,7 +36,7 @@ function Laberinto () {
         <div className='Laberinto'> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             Imprimiendo el laberinto
-            {!laberinto ? 'Cargando...' : laberinto.map((laberinto,index) => { {/*Mapeando el laberinto*/}
+            {!laberinto ? 'Cargando...' : laberinto.map((laberinto,index) => { /*Mapeando el laberinto: Si en caso no hay nada, entonces se dice que se está cargando. Si no, se pasa al map.*/
                 return <div key={index} className="Objetos">{laberinto}</div> /*Se está retornando como div el laberinto*/
             })}
         </div>
