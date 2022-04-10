@@ -19,7 +19,7 @@ function Laberinto () {
         //El async determina que la función va a tener un pedido asincrónico y cuando se hace el pedido, no se sabe cuánto va a tardar. En ese momento se pone un await
         //para decirle que espere hasta que se haga la consulta.
         const obtenerLaberinto = async() => {
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=5' //Url del API. 
              const result = await axios.get(url) //Pedido con axios y get. Se pone await para que espere la respuesta.
              //console.log(result.data) //Imprimiendo la data del API.
             //Se desea guardar en actores.
@@ -33,17 +33,19 @@ function Laberinto () {
     }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
 
     return(
-        <div className='Laberinto'> {/*Padre de todos los div's*/}
+        <div> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
-            {!laberinto ? 'Cargando...' : laberinto.map((laberinto,index) => { /*Mapeando el laberinto: Si en caso no hay nada, entonces se dice que se está cargando. Si no, se pasa al map.*/
+            {laberinto.map((hola, index) => { /*Mapeando el laberinto: Si en caso no hay nada, entonces se dice que se está cargando. Si no, se pasa al map.*/
                 
-                /*
-                laberinto.forEach(function(cosa){
-                    console.log(cosa) //Imprimiendo cada elemento extraído de la matriz.
-                    return <div className="Objetos">{cosa}</div>
-                })*/
-            return <div key={index} className="Objetos">{laberinto}</div> /*Se está retornando como div el laberinto*/
+                //Devolviendo un div con un hijo h3 que tiene la matriz de lo que se pidió en el API.
+                return(
+                    <div key={index} className='Hola'>
+                        <h3>{index}</h3>
+                        <h3>{hola}</h3>
+                    </div>
+                    )
+            
             })}
         </div>
     )

@@ -1,17 +1,9 @@
-/*Tamaños de pruebas para el laberinto*/
-.Laberinto{
-    width: 100%;
-    height: 100%;
-}
-
 /*Propiedades del título h2*/
 h2{
     text-indent: 45%;/*Indentando el título*/
     color:gold; /*Color del texto*/
 }
 
-
-/*Color de los objetos del laberinto*/
-.p{
+.Matrices{
     color: white;
 }
