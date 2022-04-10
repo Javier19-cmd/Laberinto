@@ -1,0 +1,18 @@
+{/*Mapeando la respuesta que se tuvo desde el API*/}
+            {laberinto.map(function(objeto, i) { 
+            
+            //Buscando elementos del laberinto.
+            /*El forEach recorre cada elemento de los arreglos*/
+            objeto.forEach(function(cosa){
+                console.log(cosa) //Imprimiendo cada elemento extraído de la matriz.
+                if(cosa === "p"){
+                    console.log("cosa")
+                    return <div id={i} className="p"></div>
+                }
+
+            })
+                
+               //return <div key={i} className="Player">{objeto}</div> //Retornando en la pantalla todo el laberinto que se pidió en el API.
+                
+            }
+            )}

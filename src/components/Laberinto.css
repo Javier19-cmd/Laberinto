@@ -1,0 +1,9 @@
+/*Tamaños de pruebas para el laberinto*/
+.Laberinto{
+    width: 100%;
+    height: 100%;
+}
+
+.Objetos{
+    color: #fff;
+}
