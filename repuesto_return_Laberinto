@@ -7,7 +7,7 @@
                 console.log(cosa) //Imprimiendo cada elemento extraído de la matriz.
                 if(cosa === "p"){
                     console.log("cosa")
-                    return <div id={i} className="p"></div>
+                    return <div id={i} className="Jugador"></div>
                 }
 
             })
