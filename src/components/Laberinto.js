@@ -54,6 +54,12 @@ function Laberinto () {
             //Se desea guardar en actores.
             //La función para actualizar actores es setLaberinto.
             setLaberinto(resultado) //Se llama a setLaberinto y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
+        
+            //Asignar un id a cada elemento.
+            const asignar = [...resultado] //Ya se duplicaron las cartas.
+            .sort(() => Math.random())
+            .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean las cartas, se le pone un id a cada carta y luego se colocan en el grid.
+            setLaberinto(asignar) //Se actualiza el estado de las cartas.
         }
 
         obtenerLaberinto() //Poniendo a funcionar la promesa.
@@ -106,6 +112,7 @@ function Laberinto () {
 
     }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
 
+    //Asignando los id's.
     useEffect(() => {
         asignar() //Llamando método para que asigne el id a cada elemento del maze.
     }, [])
@@ -113,11 +120,12 @@ function Laberinto () {
     
     //Método para asignar un id a cada elemento del array.
     const asignar = () => {
-          //Agarrar las cartas, mezclarlas y duplicarlas.
-        const mezcla = [laberinto] //Ya se duplicaron las cartas.
+        
+        //Agarrar las cartas, mezclarlas y duplicarlas.
+        const asignar = [...laberinto] //Ya se duplicaron las cartas.
+        .sort(() => Math.random())
         .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean las cartas, se le pone un id a cada carta y luego se colocan en el grid.
-        //Inicializando las elecciones en null por si tuvieran algo almacenado de algún intento anterior.
-        setLaberinto(mezcla) //Se actualiza el estado de las cartas.
+        setLaberinto(asignar) //Se actualiza el estado de las cartas.
     }
 
     return(
