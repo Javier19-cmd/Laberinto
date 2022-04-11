@@ -46,7 +46,9 @@ function Laberinto () {
         //El async determina que la función va a tener un pedido asincrónico y cuando se hace el pedido, no se sabe cuánto va a tardar. En ese momento se pone un await
         //para decirle que espere hasta que se haga la consulta.
         const obtenerLaberinto = async() => {
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=5' //Url del API. 
+
+            //Trayendo el laberinto desde el API.
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
              const result = await fetch(url) //Pedido con axios y get. Se pone await para que espere la respuesta.
              const resultado = await result.json()
              //console.log(result.data) //Imprimiendo la data del API.
@@ -54,12 +56,11 @@ function Laberinto () {
             //Se desea guardar en actores.
             //La función para actualizar actores es setLaberinto.
             setLaberinto(resultado) //Se llama a setLaberinto y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
-        
-            //Asignar un id a cada elemento.
-            const asignar = [...resultado] //Ya se duplicaron las cartas.
-            .sort(() => Math.random())
-            .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean las cartas, se le pone un id a cada carta y luego se colocan en el grid.
-            setLaberinto(asignar) //Se actualiza el estado de las cartas.
+            
+            //Asignar un id a cada elemento del laberinto.
+            resultado
+            .map((elemento) => ({elemento, id: Math.random() })) //Se mapean los elementos, se le pone un id a cada elementos y luego se colocan en la pantalla.
+            setLaberinto(asignar) //Se actualiza el estado de los objetos.
         }
 
         obtenerLaberinto() //Poniendo a funcionar la promesa.
@@ -112,32 +113,34 @@ function Laberinto () {
 
     }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
 
-    //Asignando los id's.
-    useEffect(() => {
-        asignar() //Llamando método para que asigne el id a cada elemento del maze.
-    }, [])
+    // //Asignando los id's.
+    // useEffect(() => {
+    //     asignar() //Llamando método para que asigne el id a cada elemento del maze.
+    // }, [])
 
     
-    //Método para asignar un id a cada elemento del array.
-    const asignar = () => {
+    // //Método para asignar un id a cada elemento del array.
+    // const asignar = () => {
         
-        //Agarrar las cartas, mezclarlas y duplicarlas.
-        const asignar = [...laberinto] //Ya se duplicaron las cartas.
-        .sort(() => Math.random())
-        .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean las cartas, se le pone un id a cada carta y luego se colocan en el grid.
-        setLaberinto(asignar) //Se actualiza el estado de las cartas.
-    }
+    //     //Agarrar las cartas, mezclarlas y duplicarlas.
+    //     const asignar = [...laberinto] //Ya se duplicaron las cartas.
+    //     .sort(() => Math.random())
+    //     .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean las cartas, se le pone un id a cada carta y luego se colocan en el grid.
+    //     setLaberinto(asignar) //Se actualiza el estado de las cartas.
+    // }
 
     return(
         <div> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
-             {laberinto.map((elemento) => (
-                <Elementos
-                    key={elemento.id} 
-                    cosa={elemento}     
-                />
-             ))}
+            <div className='Mapa'>
+                {laberinto.map((elemento) => (
+                    <Elementos
+                        key={elemento.id} 
+                        cosa={elemento}     
+                    />
+                ))}
+            </div>
         </div>
     )
 

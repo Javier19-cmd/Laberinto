@@ -10,13 +10,14 @@ h2{
 }
 
 /*maze es el papá de todo lo que está de aquí hasta abajo*/
-.maze{
-    position: absolute;
+.Mapa{
     display: grid;
+    margin-top: 40px; /*Agregando un margen de espacio a la grilla con respecto al objeto de arriba*/
+    grid-gap: 20px;  /*Agregando un margen de espacio entre sí a las columnas*/
 }
 
 /*Propiedades del jugador.*/
-.p .Player{
+.maze .Player{
     position: relative;
     width: 100px; 
     height: 10px; 
@@ -24,7 +25,7 @@ h2{
 }
 
 /*Propiedades de la meta*/
-.g .Meta{
+.maze .Meta{
     position: relative;
     width: 100px; 
     height: 10px; 
@@ -32,7 +33,7 @@ h2{
 }
 
 /*Propiedades de las paredes laterales*/
-.Palo{
+.maze .Palo{
     position: relative;
     width: 100px; 
     height: 10px; 
@@ -40,7 +41,7 @@ h2{
 }
 
 /*Propiedades de los símbolos +*/
-.Mas {
+.maze .Mas {
     position: relative;
     width: 100px; 
     height: 10px; 
@@ -48,7 +49,7 @@ h2{
 }
 
 /*Propiedades de los símobolos -*/
-.Menos {
+.maze .Menos {
     position: relative;
     width: 100px; 
     height: 10px; 
