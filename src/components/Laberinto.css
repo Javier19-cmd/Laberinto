@@ -1,16 +1,21 @@
+/*Función principal del archivo de Laberinto*/
 .Laberinto {
     position: relative;
 }
-.maze{
-    position: absolute;
-    display: grid;
-}
+
 /*Propiedades del título h2*/
 h2{
     text-indent: 45%;/*Indentando el título*/
     color:gold; /*Color del texto*/
 }
 
+/*maze es el papá de todo lo que está de aquí hasta abajo*/
+.maze{
+    position: absolute;
+    display: grid;
+}
+
+/*Propiedades del jugador.*/
 .p .Player{
     position: relative;
     width: 100px; 
@@ -18,9 +23,34 @@ h2{
     background: white;
 }
 
-.Meta{
+/*Propiedades de la meta*/
+.g .Meta{
     position: relative;
     width: 100px; 
     height: 10px; 
     background: red;
+}
+
+/*Propiedades de las paredes laterales*/
+.Palo{
+    position: relative;
+    width: 100px; 
+    height: 10px; 
+    background: green;
+}
+
+/*Propiedades de los símbolos +*/
+.Mas {
+    position: relative;
+    width: 100px; 
+    height: 10px; 
+    background: lightblue;
+}
+
+/*Propiedades de los símobolos -*/
+.Menos {
+    position: relative;
+    width: 100px; 
+    height: 10px; 
+    background: lightpink;
 }

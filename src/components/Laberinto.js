@@ -13,6 +13,19 @@ function Elementos({cosa}){
             <div className={cosa ? "g": ""}> {/*Div para la meta*/}
                 <div className='Meta'></div>
             </div>
+
+            <div className={cosa ? "|": ""}> {/*Div para las paredes*/}
+                <div className='Palo'></div>
+            </div>
+
+            <div className={cosa ? "+": ""}> {/*Div para los +*/}
+                <div className='Mas'></div>
+            </div>
+
+            <div className={cosa ? "-": ""}> {/*Div para los -*/}
+                <div className='Menos'></div>
+            </div>
+
         </div>
     )
 }
@@ -45,61 +58,75 @@ function Laberinto () {
 
         obtenerLaberinto() //Poniendo a funcionar la promesa.
 
-        //Método para poder ver cada elemento del laberinto.
-        const cosas = () => {
+        // //Método para poder ver cada elemento del laberinto.
+        // const cosas = () => {
             
-            //Haciendo set de los div's con clases a cada elemento encontrado en los arrays.
-            setLaberinto(prevLaberinto => {
-                return prevLaberinto.map(objeto => {
-                    //Con una función de devolución ES5
-                    objeto.forEach(function (element) {
+        //     //Haciendo set de los div's con clases a cada elemento encontrado en los arrays.
+        //     setLaberinto(prevLaberinto => {
+        //         return prevLaberinto.map(objeto => {
+        //             //Con una función de devolución ES5
+        //             objeto.forEach(function (element) {
                         
-                        //Elemento player.
-                        if(element === "p"){
-                            console.log("Elemento player", element)
-                            return <div className="Player"></div>
+        //                 //Elemento player.
+        //                 if(element === "p"){
+        //                     console.log("Elemento player", element)
+        //                     return <div className="Player"></div>
                             
-                        }
+        //                 }
                         
-                        //Elememento más +.
-                        if(element === "+"){
-                            console.log("Elemento '+'", element)
-                            return <div className="Mas"></div>
-                        }
+        //                 //Elememento más +.
+        //                 if(element === "+"){
+        //                     console.log("Elemento '+'", element)
+        //                     return <div className="Mas"></div>
+        //                 }
     
-                        //Elememento menos "-".
-                        if(element === "-"){
-                            console.log("Elemento '-'", element)
-                            return <div className="Menos"></div>
-                        }
+        //                 //Elememento menos "-".
+        //                 if(element === "-"){
+        //                     console.log("Elemento '-'", element)
+        //                     return <div className="Menos"></div>
+        //                 }
     
-                        //Elememento palo "|".
-                        if(element === "|"){
-                            console.log("Elemento '|'", element)
-                            return <div className="Palo"></div>
-                        }
+        //                 //Elememento palo "|".
+        //                 if(element === "|"){
+        //                     console.log("Elemento '|'", element)
+        //                     return <div className="Palo"></div>
+        //                 }
     
-                        //Elememento meta "g".
-                        if(element === "g"){
-                            console.log("Elemento 'g'", element)
-                            return <div className="Meta"></div>
-                        }
-                    })
-                })
-            })
-        }
+        //                 //Elememento meta "g".
+        //                 if(element === "g"){
+        //                     console.log("Elemento 'g'", element)
+        //                     return <div className="Meta"></div>
+        //                 }
+        //             })
+        //         })
+        //     })
+        // }
 
-        cosas() //Llamando al estado para verificar los elementos.
+        // cosas() //Llamando al estado para verificar los elementos.
 
     }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
+
+    useEffect(() => {
+        asignar() //Llamando método para que asigne el id a cada elemento del maze.
+    }, [])
+
+    
+    //Método para asignar un id a cada elemento del array.
+    const asignar = () => {
+          //Agarrar las cartas, mezclarlas y duplicarlas.
+        const mezcla = [laberinto] //Ya se duplicaron las cartas.
+        .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean las cartas, se le pone un id a cada carta y luego se colocan en el grid.
+        //Inicializando las elecciones en null por si tuvieran algo almacenado de algún intento anterior.
+        setLaberinto(mezcla) //Se actualiza el estado de las cartas.
+    }
 
     return(
         <div> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
-             {laberinto.map((elemento, index) => (
+             {laberinto.map((elemento) => (
                 <Elementos
-                    key={index} 
+                    key={elemento.id} 
                     cosa={elemento}     
                 />
              ))}
