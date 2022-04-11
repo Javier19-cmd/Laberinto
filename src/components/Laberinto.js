@@ -48,7 +48,7 @@ function Laberinto () {
         const obtenerLaberinto = async() => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=1&h=1' //Url del API. 
              const result = await fetch(url) //Pedido con axios y get. Se pone await para que espere la respuesta.
              const resultado = await result.json()
              //console.log(result.data) //Imprimiendo la data del API.
@@ -58,8 +58,8 @@ function Laberinto () {
             setLaberinto(resultado) //Se llama a setLaberinto y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
             
             //Asignar un id a cada elemento del laberinto.
-            resultado
-            .map((elemento) => ({elemento, id: Math.random() })) //Se mapean los elementos, se le pone un id a cada elementos y luego se colocan en la pantalla.
+            const asignar = [...resultado] //Ya se jalaron las cartas.
+            .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean los elementos, se le pone un id a cada elementos y luego se colocan en la pantalla.
             setLaberinto(asignar) //Se actualiza el estado de los objetos.
         }
 
