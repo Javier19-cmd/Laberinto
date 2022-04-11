@@ -2,6 +2,21 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
 
+//Función que procesa los elementos.
+function Elementos({cosa}){
+    return(
+        <div className='maze'>
+            <div className={cosa ? "p": ""}> {/*Div para el player*/}
+                <div className='Player'></div>
+            </div>
+
+            <div className={cosa ? "g": ""}> {/*Div para la meta*/}
+                <div className='Meta'></div>
+            </div>
+        </div>
+    )
+}
+
 function Laberinto () {
     
     //Api: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
@@ -9,8 +24,7 @@ function Laberinto () {
     //useState sirve para modificar el estado de un componente.
     const [laberinto, setLaberinto] = useState([]) //Se le pasa un array vacío porque va a ser el estado del maze; la variable laberinto va a ser el estado inicial del maze.
                                                     //setLaberinto permite actualizar el estado del laberinto.
-    
-    //console.log(laberinto)
+
 
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
@@ -23,66 +37,72 @@ function Laberinto () {
              const result = await fetch(url) //Pedido con axios y get. Se pone await para que espere la respuesta.
              const resultado = await result.json()
              //console.log(result.data) //Imprimiendo la data del API.
-             console.log(resultado)
+             console.log(resultado) //Imprimiendo las cosas que trajo del API.
             //Se desea guardar en actores.
             //La función para actualizar actores es setLaberinto.
             setLaberinto(resultado) //Se llama a setLaberinto y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
-            cosas()
         }
 
         obtenerLaberinto() //Poniendo a funcionar la promesa.
 
-
-    }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
-
-    //Método para poder ver cada elemento del laberinto.
-    const cosas = () => {
-
-        setLaberinto(prevLaberinto => {
-            return prevLaberinto.map(objeto => {
-                //Con una función de devolución ES5
-                objeto.forEach(function (element) {
-                    
-                    //Elemento player.
-                    if(element === "p"){
-                        console.log("Elemento player", element)
-                        return <div className="Player">{element}</div>
+        //Método para poder ver cada elemento del laberinto.
+        const cosas = () => {
+            
+            //Haciendo set de los div's con clases a cada elemento encontrado en los arrays.
+            setLaberinto(prevLaberinto => {
+                return prevLaberinto.map(objeto => {
+                    //Con una función de devolución ES5
+                    objeto.forEach(function (element) {
                         
-                    }
-                    
-                    //Elememento más +.
-                    if(element === "+"){
-                        console.log("Elemento '+'", element)
-                        return <div className="Mas">{element}</div>
-                    }
-
-                    //Elememento menos "-".
-                    if(element === "-"){
-                        console.log("Elemento '-'", element)
-                        return <div className="Menos">{element}</div>
-                    }
-
-                    //Elememento palo "|".
-                    if(element === "-"){
-                        console.log("Elemento '|'", element)
-                        return <div className="Palo">{element}</div>
-                    }
-
-                    //Elememento meta "g".
-                    if(element === "g"){
-                        console.log("Elemento 'g'", element)
-                        return <div className="Meta">{element}</div>
-                    }
+                        //Elemento player.
+                        if(element === "p"){
+                            console.log("Elemento player", element)
+                            return <div className="Player"></div>
+                            
+                        }
+                        
+                        //Elememento más +.
+                        if(element === "+"){
+                            console.log("Elemento '+'", element)
+                            return <div className="Mas"></div>
+                        }
+    
+                        //Elememento menos "-".
+                        if(element === "-"){
+                            console.log("Elemento '-'", element)
+                            return <div className="Menos"></div>
+                        }
+    
+                        //Elememento palo "|".
+                        if(element === "|"){
+                            console.log("Elemento '|'", element)
+                            return <div className="Palo"></div>
+                        }
+    
+                        //Elememento meta "g".
+                        if(element === "g"){
+                            console.log("Elemento 'g'", element)
+                            return <div className="Meta"></div>
+                        }
+                    })
                 })
             })
-        })
-    }
+        }
+
+        cosas() //Llamando al estado para verificar los elementos.
+
+    }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
 
     return(
         <div> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
-            <Laberinto/>
+             {laberinto.map((elemento, index) => (
+                <Elementos
+                    key={index} 
+                    cosa={elemento}     
+                />
+             ))}
         </div>
     )
 

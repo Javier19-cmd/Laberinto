@@ -1,9 +1,26 @@
+.Laberinto {
+    position: relative;
+}
+.maze{
+    position: absolute;
+    display: grid;
+}
 /*Propiedades del título h2*/
 h2{
     text-indent: 45%;/*Indentando el título*/
     color:gold; /*Color del texto*/
 }
 
-.Player{
-    color: white;
+.p .Player{
+    position: relative;
+    width: 100px; 
+    height: 10px; 
+    background: white;
+}
+
+.Meta{
+    position: relative;
+    width: 100px; 
+    height: 10px; 
+    background: red;
 }
