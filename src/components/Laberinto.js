@@ -131,7 +131,7 @@ function Laberinto () {
     //     setLaberinto(asignar) //Se actualiza el estado de las cartas.
     // }
 
-    console.log(laberinto)
+    console.log(laberinto) //Corroborando la matriz que se trajo del API.
     
     return(
         <div> {/*Padre de todos los div's*/}
