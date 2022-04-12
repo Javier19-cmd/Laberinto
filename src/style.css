@@ -12,6 +12,7 @@ Referencias:
 body{
     position: relative; /*Posición relativa para acomodar mejor todo lo de la página.*/
     background: linear-gradient(90deg, rgba(63,94,251,1) 7%, rgba(70,236,252,1) 94%); /*Gradiente para el color del fondo*/
+    background-image: url('https://www.xtrafondos.com/wallpapers/nubes-rosas-de-monaco-1297.jpg');
 }
 
 /*Propiedades del título de la página*/

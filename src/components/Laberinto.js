@@ -57,7 +57,7 @@ function Laberinto () {
              //console.log(result.data) //Imprimiendo la data del API.
              //console.log(resultado) //Imprimiendo las cosas que trajo del API.
              //La función para actualizar elementos es setLaberinto.
-            console.log(laberinto)
+            //console.log(laberinto)
 
             //Asignar un id a cada elemento del laberinto.
             const asignar = [...laberinto] //Ya se jalaron los elementos.
