@@ -9,13 +9,6 @@ h2{
     color:gold; /*Color del texto*/
 }
 
-/*maze es el papá de todo lo que está de aquí hasta abajo*/
-.Mapa{
-    display: grid;
-    grid-template-columns: 0.1fr 0.1fr 0.1fr 0.1fr; /*Agregando template de columnas*/
-    margin-top: 40px; /*Agregando un margen de espacio a la grilla con respecto al objeto de arriba*/
-    grid-gap: 20px;  /*Agregando un margen de espacio entre sí a las columnas*/
-}
 
 /*Propiedades del jugador.*/
 .maze .Player{

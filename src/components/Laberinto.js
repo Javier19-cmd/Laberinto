@@ -147,7 +147,7 @@ function Laberinto () {
                     elemento.map((elemento2) =>    
                     <Elementos
                         key={Math.random()}
-                        cosa={elemento2}     
+                        cosa={elemento2} 
                     />)
                 ))}
             </div>
