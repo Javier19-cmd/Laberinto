@@ -49,7 +49,7 @@ function Laberinto () {
         const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=5' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=1&h=1' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -133,6 +133,11 @@ function Laberinto () {
 
     console.log(laberinto) //Corroborando la matriz que se trajo del API.
     
+    /*laberinto.map((elemento) => (
+        elemento.map((elemento2) =>    
+        console.log(elemento2))
+    ))*/
+
     return(
         <div> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
