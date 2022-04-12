@@ -137,12 +137,13 @@ function Laberinto () {
         <div> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
-            <div className='Mapa'>
+            <div className='Mapa'> {/*Se mapea la matriz de laberinto y luego se mapea cada matriz que hay dentro de la matriz grande.*/}
                 {laberinto.map((elemento) => (
+                    elemento.map((elemento2) =>    
                     <Elementos
-                        key={Math.random()} 
-                        cosa={elemento}     
-                    />
+                        key={Math.random()}
+                        cosa={elemento2}     
+                    />)
                 ))}
             </div>
         </div>
