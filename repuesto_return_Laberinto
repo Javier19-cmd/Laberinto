@@ -45,3 +45,11 @@ function Piezas({cosa}){
         </div>
     )
 }
+
+--------
+laberinto.map((elemento) => (
+    <Elementos
+        key={elemento.id} 
+        cosa={elemento}     
+    />
+))

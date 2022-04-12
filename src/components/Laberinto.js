@@ -38,6 +38,7 @@ function Laberinto () {
     const [laberinto, setLaberinto] = useState([]) //Se le pasa un array vacío porque va a ser el estado del maze; la variable laberinto va a ser el estado inicial del maze.
                                                     //setLaberinto permite actualizar el estado del laberinto.
 
+    //const [partes, setPartes] = useState([]) //Elementos del laberinto.
 
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
@@ -45,20 +46,21 @@ function Laberinto () {
         //Función que manda a pedir el laberinto al API. Esta función va a hacer un pedido asincrónico. Va a tener un async y un await. 
         //El async determina que la función va a tener un pedido asincrónico y cuando se hace el pedido, no se sabe cuánto va a tardar. En ese momento se pone un await
         //para decirle que espere hasta que se haga la consulta.
-        const obtenerLaberinto = async() => {
+        const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=1&h=1' //Url del API. 
-             const result = await fetch(url) //Pedido con axios y get. Se pone await para que espere la respuesta.
-             const resultado = await result.json()
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=5' //Url del API. 
+            //Pedido con fetch.
+             fetch(url)
+                .then(res => res.json()) 
+                .then(datos => setLaberinto(datos))//Se llama a setLaberinto y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
              //console.log(result.data) //Imprimiendo la data del API.
-             console.log(resultado) //Imprimiendo las cosas que trajo del API.
-            //Se desea guardar en actores.
-            //La función para actualizar actores es setLaberinto.
-            setLaberinto(resultado) //Se llama a setLaberinto y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
-            
+             //console.log(resultado) //Imprimiendo las cosas que trajo del API.
+             //La función para actualizar elementos es setLaberinto.
+            console.log(laberinto)
+
             //Asignar un id a cada elemento del laberinto.
-            const asignar = [...resultado] //Ya se jalaron las cartas.
+            const asignar = [...laberinto] //Ya se jalaron los elementos.
             .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean los elementos, se le pone un id a cada elementos y luego se colocan en la pantalla.
             setLaberinto(asignar) //Se actualiza el estado de los objetos.
         }
@@ -129,6 +131,8 @@ function Laberinto () {
     //     setLaberinto(asignar) //Se actualiza el estado de las cartas.
     // }
 
+    console.log(laberinto)
+    
     return(
         <div> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
@@ -136,7 +140,7 @@ function Laberinto () {
             <div className='Mapa'>
                 {laberinto.map((elemento) => (
                     <Elementos
-                        key={elemento.id} 
+                        key={Math.random()} 
                         cosa={elemento}     
                     />
                 ))}
