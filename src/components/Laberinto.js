@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
 
-//Función que procesa los elementos.
+//Función que procesa los elementos y los manda a la pantalla.
 function Elementos({cosa}){
     return(
         <div className='maze'>
