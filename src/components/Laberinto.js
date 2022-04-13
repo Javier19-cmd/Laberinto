@@ -175,39 +175,44 @@ function Laberinto () {
                 { /*Jalando la meta*/
                     laberinto.map((elemento, idx) => (
                     /*Se devuelve cada elemento que hay en cada matriz*/
-                    <Meta
-                        key={idx}
-                        cosa={elemento}
-                    />
+                        <Meta
+                            key={idx}
+                            cosa={elemento}
+                        />
+                    
                     ))
                 }
                 { /*Jalando pared*/
-                    laberinto.map((elemento, idx) => (
+                    laberinto.map((elemento) => (
                     /*Se devuelve cada elemento que hay en cada matriz*/
-                    <Palo
-                        key={idx}
-                        cosa={elemento}
-                    />
+                    elemento.map((elemento2, idx) =>
+                            <Palo
+                                key={idx}
+                                cosa={elemento2}
+                            />
+                        )
                     ))
                 }
 
                 { /*Jalando techo*/
-                    laberinto.map((elemento, idx) => (
+                    laberinto.map((elemento) => (
                     /*Se devuelve cada elemento que hay en cada matriz*/
-                    <Mas
-                        key={idx}
-                        cosa={elemento}
-                    />
+                        elemento.map((elemento2, idx) =>
+                            <Mas
+                                key={idx}
+                                cosa={elemento2}
+                            />)
                     ))
                 }
 
                 { /*Jalando suelo*/
-                    laberinto.map((elemento, idx) => (
+                    laberinto.map((elemento) => (
                     /*Se devuelve cada elemento que hay en cada matriz*/
-                    <Menos
-                        key={idx}
-                        cosa={elemento}
-                    />
+                        elemento.map((elemento2, idx) =>
+                            <Menos
+                                key={idx}
+                                cosa={elemento2}
+                            />)
                     ))
                 }
 
