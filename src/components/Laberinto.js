@@ -3,32 +3,62 @@ import axios from 'axios'
 import styles from './Laberinto.css'
 
 //Función que procesa los elementos y los manda a la pantalla.
-function Elementos({cosa}){
+function Player({cosa}){
     return(
         <div className='maze'>
             <div className={cosa ? "p": ""}> {/*Div para el player*/}
                 <div className='Player'></div>
             </div>
-
-            <div className={cosa ? "g": ""}> {/*Div para la meta*/}
-                <div className='Meta'></div>
-            </div>
-
-            <div className={cosa ? "|": ""}> {/*Div para las paredes*/}
-                <div className='Palo'></div>
-            </div>
-
-            <div className={cosa ? "+": ""}> {/*Div para los +*/}
-                <div className='Mas'></div>
-            </div>
-
-            <div className={cosa ? "-": ""}> {/*Div para los -*/}
-                <div className='Menos'></div>
-            </div>
-
         </div>
     )
 }
+
+//Función que procesa los elementos y los manda a la pantalla.
+function Meta({cosa}){
+    return(
+        <div className='maze'>
+            <div className={cosa ? "g": ""}> {/*Div para el player*/}
+                <div className='Meta'></div>
+            </div>
+        </div>
+    )
+}
+
+
+//Función que procesa los elementos y los manda a la pantalla.
+function Palo({cosa}){
+    return(
+        <div className='maze'>
+            <div className={cosa ? "|": ""}> {/*Div para el player*/}
+                <div className='Palo'></div>
+            </div>
+        </div>
+    )
+}
+
+
+//Función que procesa los elementos y los manda a la pantalla.
+function Mas({cosa}){
+    return(
+        <div className='maze'>
+            <div className={cosa ? "+": ""}> {/*Div para el player*/}
+                <div className='Mas'></div>
+            </div>
+        </div>
+    )
+}
+
+//Función que procesa los elementos y los manda a la pantalla.
+function Menos({cosa}){
+    return(
+        <div className='maze'>
+            <div className={cosa ? "-": ""}> {/*Div para el player*/}
+                <div className='Menos'></div>
+            </div>
+        </div>
+    )
+}
+
 
 function Laberinto () {
     
@@ -49,7 +79,7 @@ function Laberinto () {
         const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=1&h=1' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -127,25 +157,60 @@ function Laberinto () {
     // }
 
     console.log(laberinto) //Corroborando la matriz que se trajo del API.
-    
-    laberinto.map((elemento) => (
-        elemento.map((elemento2) =>    
-        console.log(elemento2))
-    ))
 
     return(
         <div> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
             <div className='Mapa'> {/*Se mapea la matriz de laberinto y luego se mapea cada matriz que hay dentro de la matriz grande.*/}
-                {laberinto.map((elemento) => (
+                { /*Jalando al player*/
+                    laberinto.map((elemento, idx) => (
                     /*Se devuelve cada elemento que hay en cada matriz*/
-                    elemento.map((elemento2, idx) =>
-                        <Elementos
-                            key={idx}
-                            cosa={elemento2} 
-                        />
-                    )))}
+                    <Player
+                        key={idx}
+                        cosa={elemento}
+                    />
+                    ))
+                }
+                { /*Jalando la meta*/
+                    laberinto.map((elemento, idx) => (
+                    /*Se devuelve cada elemento que hay en cada matriz*/
+                    <Meta
+                        key={idx}
+                        cosa={elemento}
+                    />
+                    ))
+                }
+                { /*Jalando pared*/
+                    laberinto.map((elemento, idx) => (
+                    /*Se devuelve cada elemento que hay en cada matriz*/
+                    <Palo
+                        key={idx}
+                        cosa={elemento}
+                    />
+                    ))
+                }
+
+                { /*Jalando techo*/
+                    laberinto.map((elemento, idx) => (
+                    /*Se devuelve cada elemento que hay en cada matriz*/
+                    <Mas
+                        key={idx}
+                        cosa={elemento}
+                    />
+                    ))
+                }
+
+                { /*Jalando suelo*/
+                    laberinto.map((elemento, idx) => (
+                    /*Se devuelve cada elemento que hay en cada matriz*/
+                    <Menos
+                        key={idx}
+                        cosa={elemento}
+                    />
+                    ))
+                }
+
             </div>
         </div>
     )

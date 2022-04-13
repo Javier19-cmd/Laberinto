@@ -22,9 +22,6 @@ Referencias:
 1. https://www.youtube.com/watch?v=R5LTmCSOVCg&ab_channel=FacundoTissera
 
 */
-
-//import Header from './components/Header.jsx' //Importando el módulo de Header.
-//import {sum, sub} from './utils.js'
 import React, { useState, useEffect } from 'react'
 //import ReactDOM from 'react-dom'
 import * as ReactDOMClient from 'react-dom/client' //Importando el ReactDOMClient.
@@ -59,13 +56,3 @@ ReactDOM.render(
     document.getElementById('root')
     
 )*/
-
-/*console.log('Hello from index.js')
-
-console.log('sum 2 + 2', sum(2,2))
-
-console.log('sum 2 - 2', sub(2,2))*/
-
-// const root = document.getElementById('root') //Jalando el root del index.html
-
-// Header(root, {title: 'Hello world'}) //Llamando al método Header que está en la referencia Header del archivo Header.js */

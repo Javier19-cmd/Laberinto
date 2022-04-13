@@ -53,3 +53,33 @@ laberinto.map((elemento) => (
         cosa={elemento}     
     />
 ))
+
+
+---------------------------
+//Función que procesa los elementos y los manda a la pantalla.
+function Elementos({cosa}){
+    return(
+        <div className='maze'>
+            <div className={cosa ? "p": ""}> {/*Div para el player*/}
+                <div className='Player'></div>
+            </div>
+
+            <div className={cosa ? "g": ""}> {/*Div para la meta*/}
+                <div className='Meta'></div>
+            </div>
+
+            <div className={cosa ? "|": ""}> {/*Div para las paredes*/}
+                <div className='Palo'></div>
+            </div>
+
+            <div className={cosa ? "+": ""}> {/*Div para los +*/}
+                <div className='Mas'></div>
+            </div>
+
+            <div className={cosa ? "-": ""}> {/*Div para los -*/}
+                <div className='Menos'></div>
+            </div>
+
+        </div>
+    )
+}
