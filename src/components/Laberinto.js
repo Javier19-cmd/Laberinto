@@ -128,10 +128,10 @@ function Laberinto () {
 
     console.log(laberinto) //Corroborando la matriz que se trajo del API.
     
-    laberinto.map((elemento) => (
+    /*laberinto.map((elemento) => (
         elemento.map((elemento2) =>    
         console.log(elemento2))
-    ))
+    ))*/
 
     return(
         <div> {/*Padre de todos los div's*/}
@@ -140,11 +140,11 @@ function Laberinto () {
             <div className='Mapa'> {/*Se mapea la matriz de laberinto y luego se mapea cada matriz que hay dentro de la matriz grande.*/}
                 {laberinto.map((elemento) => (
                     /*Se devuelve cada elemento que hay en cada matriz*/
-                    elemento.map((elemento2) =>
-                    <Elementos
-                        key={Math.random()}
-                        cosa={elemento2} 
-                    />)
+                    elemento.map((elemento2, idx) =>
+                        <Elementos
+                            key={idx}
+                            cosa={elemento2} 
+                        />)
                 ))}
             </div>
         </div>
