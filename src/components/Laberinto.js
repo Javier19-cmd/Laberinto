@@ -128,10 +128,10 @@ function Laberinto () {
 
     console.log(laberinto) //Corroborando la matriz que se trajo del API.
     
-    /*laberinto.map((elemento) => (
+    laberinto.map((elemento) => (
         elemento.map((elemento2) =>    
         console.log(elemento2))
-    ))*/
+    ))
 
     return(
         <div> {/*Padre de todos los div's*/}
@@ -144,8 +144,8 @@ function Laberinto () {
                         <Elementos
                             key={idx}
                             cosa={elemento2} 
-                        />)
-                ))}
+                        />
+                    )))}
             </div>
         </div>
     )
