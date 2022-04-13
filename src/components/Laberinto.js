@@ -58,11 +58,6 @@ function Laberinto () {
              //console.log(resultado) //Imprimiendo las cosas que trajo del API.
              //La función para actualizar elementos es setLaberinto.
             //console.log(laberinto)
-
-            //Asignar un id a cada elemento del laberinto.
-            const asignar = [...laberinto] //Ya se jalaron los elementos.
-            .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean los elementos, se le pone un id a cada elementos y luego se colocan en la pantalla.
-            setLaberinto(asignar) //Se actualiza el estado de los objetos.
         }
 
         obtenerLaberinto() //Poniendo a funcionar la promesa.
@@ -133,10 +128,10 @@ function Laberinto () {
 
     console.log(laberinto) //Corroborando la matriz que se trajo del API.
     
-    /*laberinto.map((elemento) => (
+    laberinto.map((elemento) => (
         elemento.map((elemento2) =>    
         console.log(elemento2))
-    ))*/
+    ))
 
     return(
         <div> {/*Padre de todos los div's*/}
@@ -144,7 +139,8 @@ function Laberinto () {
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
             <div className='Mapa'> {/*Se mapea la matriz de laberinto y luego se mapea cada matriz que hay dentro de la matriz grande.*/}
                 {laberinto.map((elemento) => (
-                    elemento.map((elemento2) =>    
+                    /*Se devuelve cada elemento que hay en cada matriz*/
+                    elemento.map((elemento2) =>
                     <Elementos
                         key={Math.random()}
                         cosa={elemento2} 
