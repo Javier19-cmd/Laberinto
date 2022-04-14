@@ -9,9 +9,9 @@ h2{
     color:gold; /*Color del texto*/
 }
 
-
 /*Propiedades del jugador.*/
 .maze .Player{
+    display: flex;
     position: relative;
     width: 100px; 
     height: 10px; 

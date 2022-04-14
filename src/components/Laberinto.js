@@ -4,6 +4,36 @@ import styles from './Laberinto.css'
 
 //Función que procesa los elementos y los manda a la pantalla.
 function Player({cosa}){
+
+    /*
+    //Agregando movimientos del personaje. Aún falta arreglarle cosas.
+
+    const elemento = document.getElementById('root')
+    const cantidad = 0
+
+    window.addEventListener('keydown', (e) => {
+        const tecla = e.key
+        
+        switch (tecla){
+            case 'ArrowRight': 
+                elemento.style.transform="translateX(100px)"
+                break
+            case 'ArrowLeft':
+                elemento.style.transform="translateX(-100px)"
+                break
+            case 'ArrowUp':
+                elemento.style.transform="translateY(-100px)"
+                break
+            case 'ArrowDown':
+                elemento.style.transform="translateY(100px)"
+                break
+            default:
+                break
+        }
+    
+    
+    })*/
+
     return(
         <div className='maze'>
             <div className={cosa ? "p": ""}> {/*Div para el player*/}
@@ -193,7 +223,6 @@ function Laberinto () {
                         )
                     ))
                 }
-
                 { /*Jalando techo*/
                     laberinto.map((elemento) => (
                     /*Se devuelve cada elemento que hay en cada matriz*/
@@ -204,7 +233,6 @@ function Laberinto () {
                             />)
                     ))
                 }
-
                 { /*Jalando suelo*/
                     laberinto.map((elemento) => (
                     /*Se devuelve cada elemento que hay en cada matriz*/
