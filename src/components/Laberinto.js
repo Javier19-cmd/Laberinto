@@ -138,52 +138,6 @@ function Laberinto () {
 
         obtenerLaberinto() //Poniendo a funcionar la promesa.
 
-        // //Método para poder ver cada elemento del laberinto.
-        // const cosas = () => {
-            
-        //     //Haciendo set de los div's con clases a cada elemento encontrado en los arrays.
-        //     setLaberinto(prevLaberinto => {
-        //         return prevLaberinto.map(objeto => {
-        //             //Con una función de devolución ES5
-        //             objeto.forEach(function (element) {
-                        
-        //                 //Elemento player.
-        //                 if(element === "p"){
-        //                     console.log("Elemento player", element)
-        //                     return <div className="Player"></div>
-                            
-        //                 }
-                        
-        //                 //Elememento más +.
-        //                 if(element === "+"){
-        //                     console.log("Elemento '+'", element)
-        //                     return <div className="Mas"></div>
-        //                 }
-    
-        //                 //Elememento menos "-".
-        //                 if(element === "-"){
-        //                     console.log("Elemento '-'", element)
-        //                     return <div className="Menos"></div>
-        //                 }
-    
-        //                 //Elememento palo "|".
-        //                 if(element === "|"){
-        //                     console.log("Elemento '|'", element)
-        //                     return <div className="Palo"></div>
-        //                 }
-    
-        //                 //Elememento meta "g".
-        //                 if(element === "g"){
-        //                     console.log("Elemento 'g'", element)
-        //                     return <div className="Meta"></div>
-        //                 }
-        //             })
-        //         })
-        //     })
-        // }
-
-        // cosas() //Llamando al estado para verificar los elementos.
-
     }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
 
     // //Asignando los id's.
