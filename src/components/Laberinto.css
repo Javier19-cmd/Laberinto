@@ -1,20 +1,26 @@
-/*Función principal del archivo de Laberinto*/
-.Laberinto {
-    position: relative;
-}
-
 /*Propiedades del título h2*/
 h2{
     text-indent: 45%;/*Indentando el título*/
     color:gold; /*Color del texto*/
 }
 
+.Mapa{
+    /*Referencia: https://uniwebsidad.com/libros/referencia-css2/min-height*/
+    /*Posición absoluta para que se puedan manipular mejor los objetos*/
+    position: absolute;
+    /*Se hace un grid, ya que se está trabajando con objetos que se quieren manipular de manera cuadrada*/
+    display: grid; 
+    /*Esta propiedad ayuda a que la altura de los objetos no exceda el límite que requiere para no verse feo y sobrepuesto*/
+    /*Estp se va a ver reflejado en los div's hijos*/
+    min-height:150%;
+}
+
 /*Propiedades del jugador.*/
-.maze .Player{
-    position: relative;
-    width: 400px; 
+.Pared{
+    width: 100px; 
     height: 50px; 
     background: white;
+    background-repeat: no-repeat;
 }
 
 /*Propiedades de la meta*/

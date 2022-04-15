@@ -2,73 +2,69 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
 
-//Función que procesa los elementos y los manda a la pantalla.
-function Cosas({cosa}){
-
-    /*
-    //Agregando movimientos del personaje. Aún falta arreglarle cosas.
-
-    const elemento = document.getElementById('root')
-    const cantidad = 0
-
-    window.addEventListener('keydown', (e) => {
-        const tecla = e.key
-        
-        switch (tecla){
-            case 'ArrowRight': 
-                elemento.style.transform="translateX(100px)"
-                break
-            case 'ArrowLeft':
-                elemento.style.transform="translateX(-100px)"
-                break
-            case 'ArrowUp':
-                elemento.style.transform="translateY(-100px)"
-                break
-            case 'ArrowDown':
-                elemento.style.transform="translateY(100px)"
-                break
-            default:
-                break
-        }
-    
-    
-    })*/
-
-    return(
-        <div className='maze'>
-            <div className={cosa ? "p": ""}> {/*Div para el player*/}
-                <div className='Player'></div>
-            </div>
-            
-            <div className={cosa ? "g": ""}> {/*Div para la meta*/}
-                <div className='Meta'></div>
-            </div>
-
-            <div className={cosa ? "+": ""}> {/*Div para el techo*/}
-                <div className='Mas'></div>
-            </div>
-
-            <div className={cosa ? "-": ""}> {/*Div para el suelo*/}
-                <div className='Menos'></div>
-            </div>
-
-            <div className={cosa ? "|": ""}> {/*Div para la pared*/}
-                <div className='Palo'></div>
-            </div>
-        </div>
-    )
-}
-
 // //Función que procesa los elementos y los manda a la pantalla.
-// function Meta({cosa}){
+// function Cosas({cosa}){
+
+//     /*
+//     //Agregando movimientos del personaje. Aún falta arreglarle cosas.
+
+//     const elemento = document.getElementById('root')
+//     const cantidad = 0
+
+//     window.addEventListener('keydown', (e) => {
+//         const tecla = e.key
+        
+//         switch (tecla){
+//             case 'ArrowRight': 
+//                 elemento.style.transform="translateX(100px)"
+//                 break
+//             case 'ArrowLeft':
+//                 elemento.style.transform="translateX(-100px)"
+//                 break
+//             case 'ArrowUp':
+//                 elemento.style.transform="translateY(-100px)"
+//                 break
+//             case 'ArrowDown':
+//                 elemento.style.transform="translateY(100px)"
+//                 break
+//             default:
+//                 break
+//         }
+    
+    
+//     })*/
+
 //     return(
 //         <div className='maze'>
-//             <div className={cosa ? "g": ""}> {/*Div para el player*/}
+//             <div className={cosa ? "p": ""}> {/*Div para el player*/}
+//                 <div className='Player'></div>
+//             </div>
+            
+//             <div className={cosa ? "g": ""}> {/*Div para la meta*/}
 //                 <div className='Meta'></div>
+//             </div>
+
+//             <div className={cosa ? "+": ""}> {/*Div para el techo*/}
+//                 <div className='Mas'></div>
+//             </div>
+
+//             <div className={cosa ? "-": ""}> {/*Div para el suelo*/}
+//                 <div className='Menos'></div>
+//             </div>
+
+//             <div className={cosa ? "|": ""}> {/*Div para la pared*/}
+//                 <div className='Palo'></div>
 //             </div>
 //         </div>
 //     )
 // }
+
+//Función que procesa los elementos y los manda a la pantalla.
+function Paredes(){
+    return(
+        <div className='Pared'></div>
+    )
+}
 
 
 // //Función que procesa los elementos y los manda a la pantalla.
@@ -125,7 +121,7 @@ function Laberinto () {
         const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=1&h=1' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -163,14 +159,20 @@ function Laberinto () {
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
             <div className='Mapa'> {/*Se mapea la matriz de laberinto y luego se mapea cada matriz que hay dentro de la matriz grande.*/}
-                { /*Jalando al player*/
-                    laberinto.map((elemento, idx) => (
-                    /*Se devuelve cada elemento que hay en cada matriz*/
-                    <Cosas
-                        key={idx}
-                        cosa={elemento}
-                    />
-                    ))
+                { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
+                    laberinto.map((elementos) => 
+                        /*Entrando a la matriz que se trae desde el API*/
+                        elementos.map((elemento, idx) => {
+                            /*Leyendo cada elemento de la matriz que se trae desde el API*/
+                            if(elemento === "-" || elemento === "|" || elemento === "+"){
+                                /*Si la matriz tiene estos elementos, entonces significa que hay paredes y suelos*/
+                                return <Paredes
+                                    key = {idx}
+                                />
+                            }
+                        })
+
+                    )
                 }
 
             </div>
