@@ -2,105 +2,20 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
 
-// //Función que procesa los elementos y los manda a la pantalla.
-// function Cosas({cosa}){
-
-//     /*
-//     //Agregando movimientos del personaje. Aún falta arreglarle cosas.
-
-//     const elemento = document.getElementById('root')
-//     const cantidad = 0
-
-//     window.addEventListener('keydown', (e) => {
-//         const tecla = e.key
-        
-//         switch (tecla){
-//             case 'ArrowRight': 
-//                 elemento.style.transform="translateX(100px)"
-//                 break
-//             case 'ArrowLeft':
-//                 elemento.style.transform="translateX(-100px)"
-//                 break
-//             case 'ArrowUp':
-//                 elemento.style.transform="translateY(-100px)"
-//                 break
-//             case 'ArrowDown':
-//                 elemento.style.transform="translateY(100px)"
-//                 break
-//             default:
-//                 break
-//         }
-    
-    
-//     })*/
-
-//     return(
-//         <div className='maze'>
-//             <div className={cosa ? "p": ""}> {/*Div para el player*/}
-//                 <div className='Player'></div>
-//             </div>
-            
-//             <div className={cosa ? "g": ""}> {/*Div para la meta*/}
-//                 <div className='Meta'></div>
-//             </div>
-
-//             <div className={cosa ? "+": ""}> {/*Div para el techo*/}
-//                 <div className='Mas'></div>
-//             </div>
-
-//             <div className={cosa ? "-": ""}> {/*Div para el suelo*/}
-//                 <div className='Menos'></div>
-//             </div>
-
-//             <div className={cosa ? "|": ""}> {/*Div para la pared*/}
-//                 <div className='Palo'></div>
-//             </div>
-//         </div>
-//     )
-// }
-
 //Función que procesa los elementos y los manda a la pantalla.
 function Paredes(){
     return(
-        <div className='Pared'></div>
+        <div className='Pared'></div> /*Haciendo div para los elemenetos paredes*/
     )
 }
 
 
-// //Función que procesa los elementos y los manda a la pantalla.
-// function Palo({cosa}){
-//     return(
-//         <div className='maze'>
-//             <div className={cosa ? "|": ""}> {/*Div para el player*/}
-//                 <div className='Palo'></div>
-//             </div>
-//         </div>
-//     )
-// }
-
-
-// //Función que procesa los elementos y los manda a la pantalla.
-// function Mas({cosa}){
-//     return(
-//         <div className='maze'>
-//             <div className={cosa ? "+": ""}> {/*Div para el player*/}
-//                 <div className='Mas'></div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// //Función que procesa los elementos y los manda a la pantalla.
-// function Menos({cosa}){
-//     return(
-//         <div className='maze'>
-//             <div className={cosa ? "-": ""}> {/*Div para el player*/}
-//                 <div className='Menos'></div>
-//             </div>
-//         </div>
-//     )
-// }
-
+//Función que procesa los elementos y los manda a la pantalla.
+function Otro(){
+    return(
+        <div className='Otro'></div> /*Haciendo div para el jugador*/
+    )
+}
 
 function Laberinto () {
     
@@ -167,8 +82,12 @@ function Laberinto () {
                             if(elemento === "-" || elemento === "|" || elemento === "+"){
                                 /*Si la matriz tiene estos elementos, entonces significa que hay paredes y suelos*/
                                 return <Paredes
-                                    key = {idx}
-                                />
+                                        key = {Math.random()}
+                                        />  /*Llamando al elemento Paredes para dibujarlas en la pantalla*/
+                            }if(elemento === " " || elemento === "p"){
+                                return <Otro 
+                                        key={Math.random()}
+                                        />/*Llamando al elemento JugadorV para dibujarlo en la pantalla*/
                             }
                         })
 

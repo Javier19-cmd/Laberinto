@@ -7,7 +7,7 @@ h2{
 .Mapa{
     /*Referencia: https://uniwebsidad.com/libros/referencia-css2/min-height*/
     /*Posición absoluta para que se puedan manipular mejor los objetos*/
-    position: absolute;
+    position: relative;
     /*Se hace un grid, ya que se está trabajando con objetos que se quieren manipular de manera cuadrada*/
     display: grid; 
     /*Esta propiedad ayuda a que la altura de los objetos no exceda el límite que requiere para no verse feo y sobrepuesto*/
@@ -17,40 +17,14 @@ h2{
 
 /*Propiedades del jugador.*/
 .Pared{
-    width: 100px; 
-    height: 50px; 
+    width: 100px; /*Ancho de prueba*/
+    height: 50px; /*Se ve limitado por el min-height del parent, el cual es el .Mapa*/ 
     background: white;
-    background-repeat: no-repeat;
 }
 
-/*Propiedades de la meta*/
-.maze .Meta{
+/*Propiedades del espacio vacío y del player.*/
+.Otro{
     position: relative;
-    width: 400px; 
-    height: 50px; 
-    background: red;
-}
-
-
-/*Propiedades de las paredes laterales*/
-.maze .Palo{
-    position: relative;
-    width: 400px; 
-    height: 50px; 
-    background: green;
-}
-
-/*Propiedades de los símbolos +*/
-.maze .Mas {
-    position: relative;
-    width: 400px; 
-    height: 50px; 
-}
-
-/*Propiedades de los símobolos -*/
-.maze .Menos {
-    position: relative;
-    width: 400px; 
-    height: 50px; 
-    background: lightpink;
+    width: 100px; /*Ancho*/
+    height: 50px; /*Alto*/
 }
