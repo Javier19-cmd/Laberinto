@@ -12,7 +12,7 @@ h2{
 /*Propiedades del jugador.*/
 .maze .Player{
     position: relative;
-    width: 100px; 
+    width: 400px; 
     height: 50px; 
     background: white;
 }
@@ -20,7 +20,7 @@ h2{
 /*Propiedades de la meta*/
 .maze .Meta{
     position: relative;
-    width: 100px; 
+    width: 400px; 
     height: 50px; 
     background: red;
 }
@@ -29,22 +29,22 @@ h2{
 /*Propiedades de las paredes laterales*/
 .maze .Palo{
     position: relative;
-    width: 100px; 
-    height: 10px; 
+    width: 400px; 
+    height: 50px; 
     background: green;
 }
 
 /*Propiedades de los símbolos +*/
 .maze .Mas {
     position: relative;
-    width: 100px; 
-    height: 10px; 
+    width: 400px; 
+    height: 50px; 
 }
 
 /*Propiedades de los símobolos -*/
 .maze .Menos {
     position: relative;
-    width: 100px; 
-    height: 10px; 
+    width: 400px; 
+    height: 50px; 
     background: lightpink;
 }
