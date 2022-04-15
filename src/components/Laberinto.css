@@ -13,7 +13,7 @@ h2{
 .maze .Player{
     position: relative;
     width: 100px; 
-    height: 10px; 
+    height: 50px; 
     background: white;
 }
 
@@ -21,7 +21,7 @@ h2{
 .maze .Meta{
     position: relative;
     width: 100px; 
-    height: 10px; 
+    height: 50px; 
     background: red;
 }
 
@@ -32,9 +32,6 @@ h2{
     width: 100px; 
     height: 10px; 
     background: green;
-    /*Posiciones temporales*/
-    right: -400px;
-    top: -200px;
 }
 
 /*Propiedades de los símbolos +*/
@@ -42,10 +39,6 @@ h2{
     position: relative;
     width: 100px; 
     height: 10px; 
-    background: lightblue;
-    /*Posiciones temporales*/
-    right: -600px;
-    top: -1300px;
 }
 
 /*Propiedades de los símobolos -*/
@@ -54,7 +47,4 @@ h2{
     width: 100px; 
     height: 10px; 
     background: lightpink;
-    /*Posiciones temporales*/
-    right: -800px;
-    top: -2600px;
 }
