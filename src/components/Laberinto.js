@@ -24,6 +24,13 @@ function Jugador(){
     )
 }
 
+//Función que procesa los elementos y los manda a la pantalla.
+function Meta(){
+    return(
+        <div className='Meta'></div> /*Haciendo div para el espacio vacío*/
+    )
+}
+
 function Laberinto () {
     
     //Api: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
@@ -96,9 +103,14 @@ function Laberinto () {
                                         key={Math.random()}
                                         />/*Llamando al elemento otro para dibujar un espacio vacío en el canvas*/
                             }if(elemento === "p"){
+                                /*Llamando al método de Jugador para que cree un div personalizado*/
                                 return <Jugador
                                     key={Math.random()}
                                 />
+                            }if(elemento === "g"){
+                                return <Meta
+                                    key={Math.random()}
+                                />                                
                             }
                         })
 

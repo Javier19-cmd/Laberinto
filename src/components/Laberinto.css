@@ -7,32 +7,41 @@ h2{
 .Mapa{
     /*Referencia: https://uniwebsidad.com/libros/referencia-css2/min-height*/
     /*Posición absoluta para que se puedan manipular mejor los objetos*/
-    position: relative;
+    position: absolute;
     /*Se hace un grid, ya que se está trabajando con objetos que se quieren manipular de manera cuadrada*/
     display: grid; 
     /*Esta propiedad ayuda a que la altura de los objetos no exceda el límite que requiere para no verse feo y sobrepuesto*/
-    /*Estp se va a ver reflejado en los div's hijos*/
-    min-height:75%;
+    /*Esto se va a ver reflejado en los div's hijos*/
+    min-height:100px;
 }
 
 /*Propiedades del jugador.*/
 .Pared{
     position: relative;
-    width: 50px; /*Ancho de prueba*/
-    height: 50px; /*Se ve limitado por el min-height del parent, el cual es el .Mapa*/ 
+    width: 75px; /*Ancho de prueba*/
+    height: 75px; /*Se ve limitado por el min-height del parent, el cual es el .Mapa*/ 
     background: white;
 }
 
 /*Propiedades de los espacios vacíos.*/
 .Otro{
     position: relative;
-    width: 50px; /*Ancho*/
-    height: 50px; /*Alto*/
+    width: 75px; /*Ancho*/
+    height: 75px; /*Alto*/
 }
 
+/*Propiedades del jugador*/
 .Jugador{
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     background: blue;
+}
+
+/*Propiedades de la meta*/
+.Meta{
+    position: relative;
+    width: 75px;
+    height: 75px;
+    background: black;
 }
