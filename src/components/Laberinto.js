@@ -13,7 +13,14 @@ function Paredes(){
 //Función que procesa los elementos y los manda a la pantalla.
 function Otro(){
     return(
-        <div className='Otro'></div> /*Haciendo div para el jugador*/
+        <div className='Otro'></div> /*Haciendo div para el espacio vacío*/
+    )
+}
+
+//Función que procesa los elementos y los manda a la pantalla.
+function Jugador(){
+    return(
+        <div className='Jugador'></div> /*Haciendo div para el espacio vacío*/
     )
 }
 
@@ -70,7 +77,7 @@ function Laberinto () {
     console.log(laberinto) //Corroborando la matriz que se trajo del API.
 
     return(
-        <div> {/*Padre de todos los div's*/}
+        <div className="Maze"> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Imprimiendo el laberinto</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
             <div className='Mapa'> {/*Se mapea la matriz de laberinto y luego se mapea cada matriz que hay dentro de la matriz grande.*/}
@@ -84,10 +91,14 @@ function Laberinto () {
                                 return <Paredes
                                         key = {Math.random()}
                                         />  /*Llamando al elemento Paredes para dibujarlas en la pantalla*/
-                            }if(elemento === " " || elemento === "p"){
+                            }if(elemento === " "){
                                 return <Otro 
                                         key={Math.random()}
-                                        />/*Llamando al elemento JugadorV para dibujarlo en la pantalla*/
+                                        />/*Llamando al elemento otro para dibujar un espacio vacío en el canvas*/
+                            }if(elemento === "p"){
+                                return <Jugador
+                                    key={Math.random()}
+                                />
                             }
                         })
 

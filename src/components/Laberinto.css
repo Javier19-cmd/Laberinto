@@ -12,19 +12,27 @@ h2{
     display: grid; 
     /*Esta propiedad ayuda a que la altura de los objetos no exceda el límite que requiere para no verse feo y sobrepuesto*/
     /*Estp se va a ver reflejado en los div's hijos*/
-    min-height:150%;
+    min-height:75%;
 }
 
 /*Propiedades del jugador.*/
 .Pared{
-    width: 100px; /*Ancho de prueba*/
+    position: relative;
+    width: 50px; /*Ancho de prueba*/
     height: 50px; /*Se ve limitado por el min-height del parent, el cual es el .Mapa*/ 
     background: white;
 }
 
-/*Propiedades del espacio vacío y del player.*/
+/*Propiedades de los espacios vacíos.*/
 .Otro{
     position: relative;
-    width: 100px; /*Ancho*/
+    width: 50px; /*Ancho*/
     height: 50px; /*Alto*/
+}
+
+.Jugador{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: blue;
 }
