@@ -13,11 +13,12 @@ h2{
     /*Esta propiedad ayuda a que la altura de los objetos no exceda el límite que requiere para no verse feo y sobrepuesto*/
     /*Esto se va a ver reflejado en los div's hijos*/
     min-height:100px;
+    /*grid-template-rows: repeat(90, 1fr);
+    grid-template-columns: repeat(90, 1fr);*/
 }
 
 /*Propiedades del jugador.*/
 .Pared{
-    position: relative;
     width: 75px; /*Ancho de prueba*/
     height: 75px; /*Se ve limitado por el min-height del parent, el cual es el .Mapa*/ 
     background: white;
@@ -25,14 +26,14 @@ h2{
 
 /*Propiedades de los espacios vacíos.*/
 .Otro{
-    position: relative;
+    
     width: 75px; /*Ancho*/
     height: 75px; /*Alto*/
 }
 
 /*Propiedades del jugador*/
 .Jugador{
-    position: relative;
+    
     width: 75px;
     height: 75px;
     background: blue;
@@ -40,7 +41,7 @@ h2{
 
 /*Propiedades de la meta*/
 .Meta{
-    position: relative;
+    
     width: 75px;
     height: 75px;
     background: black;

@@ -91,7 +91,7 @@ function Laberinto () {
                 { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
                     laberinto.map((elementos) => 
                         /*Entrando a la matriz que se trae desde el API*/
-                        elementos.map((elemento, idx) => {
+                        elementos.map((elemento) => {
                             /*Leyendo cada elemento de la matriz que se trae desde el API*/
                             if(elemento === "-" || elemento === "|" || elemento === "+"){
                                 /*Si la matriz tiene estos elementos, entonces significa que hay paredes y suelos*/
