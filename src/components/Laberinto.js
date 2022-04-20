@@ -37,13 +37,6 @@ function Meta(){
     )
 }
 
-//Función que procesa los elementos y los manda a la pantalla.
-function Nada(){
-    return(
-        <div className='Nada'></div> /*Haciendo div para el espacio vacío*/
-    )
-}
-
 function Laberinto () {
     
     //Api: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
@@ -129,10 +122,6 @@ function Laberinto () {
                                 return <Meta
                                     key={Math.random()}
                                 />                                
-                            }else {
-                                return <Nada
-                                    key={Math.random()}
-                                />
                             }
                         })
                         }</div>
