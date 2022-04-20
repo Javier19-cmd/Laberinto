@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
 
-//Función que procesa los elementos y los manda a la pantalla.
+//Función que procesa los elementos y los manda a la pantalla. Este lee a todas las paredes.
 function Paredes(){
     return(
         <div className='Pared'>
@@ -12,14 +12,14 @@ function Paredes(){
 }
 
 
-//Función que procesa los elementos y los manda a la pantalla.
+//Función que procesa los elementos y los manda a la pantalla. Este lee el espacio vacío.
 function Otro(){
     return(
         <div className='Otro'></div> /*Haciendo div para el espacio vacío*/
     )
 }
 
-//Función que procesa los elementos y los manda a la pantalla.
+//Función que procesa los elementos y los manda a la pantalla. Este lee al elemento del jugador.
 function Jugador(){
     return(
         <div className='Jugador'>
@@ -44,12 +44,11 @@ function Laberinto () {
     //useState sirve para modificar el estado de un componente.
     const [laberinto, setLaberinto] = useState([]) //Se le pasa un array vacío porque va a ser el estado del maze; la variable laberinto va a ser el estado inicial del maze.
                                                     //setLaberinto permite actualizar el estado del laberinto.
-    
-    //Estados para las posiciones del jugador en el laberinto.
-    const [valorx, setValorx] = useState(0)
-    const [valory, setValory] = useState(0)
 
-    //const [partes, setPartes] = useState([]) //Elementos del laberinto.
+    /*Estados para las posiciones x e y*/
+    const [posx, setPosx] = useState(0)
+    const [posy, setPosy] = useState(0)
+
 
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
@@ -60,7 +59,7 @@ function Laberinto () {
         const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=7&h=7' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=3&h=3' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -75,21 +74,6 @@ function Laberinto () {
 
     }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
 
-    // //Asignando los id's.
-    // useEffect(() => {
-    //     asignar() //Llamando método para que asigne el id a cada elemento del maze.
-    // }, [])
-
-    
-    // //Método para asignar un id a cada elemento del array.
-    // const asignar = () => {
-        
-    //     //Agarrar las cartas, mezclarlas y duplicarlas.
-    //     const asignar = [...laberinto] //Ya se duplicaron las cartas.
-    //     .sort(() => Math.random())
-    //     .map((elemento) => ({...elemento, id: Math.random() })) //Se mapean las cartas, se le pone un id a cada carta y luego se colocan en el grid.
-    //     setLaberinto(asignar) //Se actualiza el estado de las cartas.
-    // }
 
     console.log(laberinto) //Corroborando la matriz que se trajo del API.
 
@@ -101,7 +85,7 @@ function Laberinto () {
                 { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
                     laberinto.map((elementos) => 
                         /*Entrando a la matriz que se trae desde el API*/
-                        <div className='Todo' key={Math.random()}>{
+                     <div className='Todo' key={Math.random()}>{
                         elementos.map((elemento) => {
                             /*Leyendo cada elemento de la matriz que se trae desde el API*/
                             if(elemento === "-" || elemento === "|" || elemento === "+"){
@@ -124,10 +108,10 @@ function Laberinto () {
                                 />                                
                             }
                         })
-                        }</div>
+                        }
+                        </div>
                     )
                 }
-
             </div>
         </div>
     )
