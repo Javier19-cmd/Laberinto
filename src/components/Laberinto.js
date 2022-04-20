@@ -30,15 +30,19 @@ function Jugador(){
 
         document.addEventListener("keydown", (e) => {
             if(e.key === "ArrowLeft"){
+                /*Detectando la flecha izquierda para poder mover al personaje*/
                 console.log("Izquierda")
                 moverIzquierda()
             }else if(e.key === "ArrowRight"){
+                /*Detectando la flecha derecha para poder mover al personaje*/
                 console.log("Derecha")
                 moverDerecha()
             }else if(e.key === "ArrowDown"){
+                /*Detectando la flecha de abajo para poder mover al personaje*/
                 console.log("Abajo")
                 moverAbajo()
             }else if(e.key === "ArrowUp"){
+                /*Detectando la flecha de arriba para poder mover al personaje*/
                 console.log("Arriba")
                 moverArriba()
             }
