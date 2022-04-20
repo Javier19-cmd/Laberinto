@@ -5,7 +5,9 @@ import styles from './Laberinto.css'
 //Función que procesa los elementos y los manda a la pantalla.
 function Paredes(){
     return(
-        <div className='Pared'></div> /*Haciendo div para los elemenetos paredes*/
+        <div className='Pared'>
+            <img className='Paredes' src="https://www.svgrepo.com/show/124383/brick-wall.svg"/>
+        </div> /*Haciendo div para los elemenetos paredes*/
     )
 }
 
@@ -19,15 +21,59 @@ function Otro(){
 
 //Función que procesa los elementos y los manda a la pantalla.
 function Jugador(){
+
+    window.addEventListener("load", ()=> {
+        const per = document.getElementById("Jugador")
+        const vel = 50
+        const top = 0
+        const left = 0
+
+        document.addEventListener("keydown", (e) => {
+            if(e.key === "ArrowLeft"){
+                console.log("Izquierda")
+                moverIzquierda()
+            }else if(e.key === "ArrowRight"){
+                console.log("Derecha")
+                moverDerecha()
+            }else if(e.key === "ArrowDown"){
+                console.log("Abajo")
+                moverAbajo()
+            }else if(e.key === "ArrowUp"){
+                console.log("Arriba")
+                moverArriba()
+            }
+        })
+
+        function moverIzquierda(){
+            per.style.marginLeft = `${left}px`
+        }
+
+        function moverDerecha(){
+            per.style.marginLeft = `${left}px`
+        }
+
+        function moverAbajo(){
+            per.style.marginLeft = `${left}px`
+        }
+
+        function moverArriba(){
+            per.style.marginLeft = `${left}px`
+        }
+    })
+
     return(
-        <div className='Jugador'></div> /*Haciendo div para el espacio vacío*/
+        <div className='Jugador'>
+            <img className='Heroe' src="https://i.pinimg.com/564x/c2/a5/2f/c2a52f32defd4686ca3b0b3703aaba6a.jpg"/>
+        </div> /*Haciendo div para el espacio vacío*/
     )
 }
 
 //Función que procesa los elementos y los manda a la pantalla.
 function Meta(){
     return(
-        <div className='Meta'></div> /*Haciendo div para el espacio vacío*/
+        <div className='Meta'>
+            <img className='Metas' src='https://previews.123rf.com/images/romanbykhalets/romanbykhalets1903/romanbykhalets190300283/124220354-bandera-de-acabado-símbolo-del-campeonato-exitoso-símbolo-de-carreras-línea-de-meta-diseño-plano-eps.jpg'/>
+        </div> /*Haciendo div para el espacio vacío*/
     )
 }
 
@@ -57,7 +103,7 @@ function Laberinto () {
         const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=2&h=2' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=5' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -98,7 +144,7 @@ function Laberinto () {
                 { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
                     laberinto.map((elementos) => 
                         /*Entrando a la matriz que se trae desde el API*/
-                        <div className='Todo'>{
+                        <div className='Todo' key={Math.random()}>{
                         elementos.map((elemento) => {
                             /*Leyendo cada elemento de la matriz que se trae desde el API*/
                             if(elemento === "-" || elemento === "|" || elemento === "+"){
