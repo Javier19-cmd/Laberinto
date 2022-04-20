@@ -21,54 +21,10 @@ function Otro(){
 
 //Función que procesa los elementos y los manda a la pantalla.
 function Jugador(){
-
-    window.addEventListener("load", ()=> {
-        const per = document.getElementById("Jugador")
-        const vel = 50
-        const top = 0
-        const left = 0
-
-        document.addEventListener("keydown", (e) => {
-            if(e.key === "ArrowLeft"){
-                /*Detectando la flecha izquierda para poder mover al personaje*/
-                console.log("Izquierda")
-                moverIzquierda()
-            }else if(e.key === "ArrowRight"){
-                /*Detectando la flecha derecha para poder mover al personaje*/
-                console.log("Derecha")
-                moverDerecha()
-            }else if(e.key === "ArrowDown"){
-                /*Detectando la flecha de abajo para poder mover al personaje*/
-                console.log("Abajo")
-                moverAbajo()
-            }else if(e.key === "ArrowUp"){
-                /*Detectando la flecha de abajo para poder mover al personaje*/
-                console.log("Arriba")
-                moverArriba()
-            }
-        })
-
-        function moverIzquierda(){
-            per.style.marginLeft = `${left}px`
-        }
-
-        function moverDerecha(){
-            per.style.marginLeft = `${left}px`
-        }
-
-        function moverAbajo(){
-            per.style.marginLeft = `${left}px`
-        }
-
-        function moverArriba(){
-            per.style.marginLeft = `${left}px`
-        }
-    })
-
     return(
         <div className='Jugador'>
             <img className='Heroe' src="https://i.pinimg.com/564x/c2/a5/2f/c2a52f32defd4686ca3b0b3703aaba6a.jpg"/>
-        </div> /*Haciendo div para el espacio vacío*/
+        </div> /*Haciendo div para el jugador*/
     )
 }
 
@@ -95,6 +51,10 @@ function Laberinto () {
     //useState sirve para modificar el estado de un componente.
     const [laberinto, setLaberinto] = useState([]) //Se le pasa un array vacío porque va a ser el estado del maze; la variable laberinto va a ser el estado inicial del maze.
                                                     //setLaberinto permite actualizar el estado del laberinto.
+    
+    //Estados para las posiciones del jugador en el laberinto.
+    const [valorx, setValorx] = useState(0)
+    const [valory, setValory] = useState(0)
 
     //const [partes, setPartes] = useState([]) //Elementos del laberinto.
 
@@ -107,7 +67,7 @@ function Laberinto () {
         const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=5' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=7&h=7' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
