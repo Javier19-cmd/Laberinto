@@ -42,7 +42,7 @@ function Jugador(){
                 console.log("Abajo")
                 moverAbajo()
             }else if(e.key === "ArrowUp"){
-                /*Detectando la flecha de arriba para poder mover al personaje*/
+                /*Detectando la flecha de abajo para poder mover al personaje*/
                 console.log("Arriba")
                 moverArriba()
             }
