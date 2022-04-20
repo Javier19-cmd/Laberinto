@@ -1,14 +1,15 @@
 /*Propiedades del título h2*/
 h2{
-    text-indent: 45%;/*Indentando el título*/
+    text-indent: 40%;/*Indentando el título*/
     color:gold; /*Color del texto*/
 }
 
+/*Propiedades del mapa*/
 .Mapa{
     /*Posición absoluta para que se puedan manipular mejor los objetos*/
     position: absolute;
     /*Display flex para mejor comodidad*/
-    display: flex; /*Display*/
+    display: flex;
 }
 
 /*Propiedades del jugador.*/
