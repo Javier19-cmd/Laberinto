@@ -31,6 +31,13 @@ function Meta(){
     )
 }
 
+//Función que procesa los elementos y los manda a la pantalla.
+function Nada(){
+    return(
+        <div className='Nada'></div> /*Haciendo div para el espacio vacío*/
+    )
+}
+
 function Laberinto () {
     
     //Api: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
@@ -50,7 +57,7 @@ function Laberinto () {
         const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=1&h=1' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=2&h=2' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -91,6 +98,7 @@ function Laberinto () {
                 { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
                     laberinto.map((elementos) => 
                         /*Entrando a la matriz que se trae desde el API*/
+                        <div className='Todo'>{
                         elementos.map((elemento) => {
                             /*Leyendo cada elemento de la matriz que se trae desde el API*/
                             if(elemento === "-" || elemento === "|" || elemento === "+"){
@@ -98,22 +106,26 @@ function Laberinto () {
                                 return <Paredes
                                         key = {Math.random()}
                                         />  /*Llamando al elemento Paredes para dibujarlas en la pantalla*/
-                            }if(elemento === " "){
+                            }else if(elemento === " "){
                                 return <Otro 
                                         key={Math.random()}
                                         />/*Llamando al elemento otro para dibujar un espacio vacío en el canvas*/
-                            }if(elemento === "p"){
+                            }else if(elemento === "p"){
                                 /*Llamando al método de Jugador para que cree un div personalizado*/
                                 return <Jugador
                                     key={Math.random()}
                                 />
-                            }if(elemento === "g"){
+                            }else if(elemento === "g"){
                                 return <Meta
                                     key={Math.random()}
                                 />                                
+                            }else {
+                                return <Nada
+                                    key={Math.random()}
+                                />
                             }
                         })
-
+                        }</div>
                     )
                 }
 

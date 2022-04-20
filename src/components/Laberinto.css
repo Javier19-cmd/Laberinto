@@ -9,7 +9,7 @@ h2{
     /*Posición absoluta para que se puedan manipular mejor los objetos*/
     position: absolute;
     /*Se hace un grid, ya que se está trabajando con objetos que se quieren manipular de manera cuadrada*/
-    display: grid; 
+    display: flex; 
     /*Esta propiedad ayuda a que la altura de los objetos no exceda el límite que requiere para no verse feo y sobrepuesto*/
     /*Esto se va a ver reflejado en los div's hijos*/
     min-height:100px;
@@ -22,6 +22,7 @@ h2{
     width: 75px; /*Ancho de prueba*/
     height: 75px; /*Se ve limitado por el min-height del parent, el cual es el .Mapa*/ 
     background: white;
+    margin: 5px;
 }
 
 /*Propiedades de los espacios vacíos.*/
@@ -29,6 +30,7 @@ h2{
     
     width: 75px; /*Ancho*/
     height: 75px; /*Alto*/
+    margin: 5px; /*Margen del cinco pixeles*/
 }
 
 /*Propiedades del jugador*/
@@ -37,6 +39,8 @@ h2{
     width: 75px;
     height: 75px;
     background: blue;
+    margin: 5px;
+
 }
 
 /*Propiedades de la meta*/
@@ -45,4 +49,6 @@ h2{
     width: 75px;
     height: 75px;
     background: black;
+    margin: 5px;
+
 }
