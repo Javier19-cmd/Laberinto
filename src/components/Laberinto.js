@@ -53,6 +53,8 @@ function Laberinto () {
     const [posx, setPosx] = useState(1)
     const [posy, setPosy] = useState(1)
 
+    //const referencia = useRef()
+
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
 
@@ -62,7 +64,7 @@ function Laberinto () {
         function obtenerLaberinto  () {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=3&h=3' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=4' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -82,44 +84,55 @@ function Laberinto () {
 
     /*Esta función se encarga de poder hacer los movimeintos del personaje*/
     function movimientos() {
-        window.addEventListener("load", ()=> {
+        
+        //Event Listener de la ventana.
+        window.addEventListener("load", () => {
             
             /*Identificando las teclas que se presionan*/
             document.addEventListener("keydown", (e) => {
                 if(e.key === "ArrowLeft"){
+                    
                     /*Detectando la flecha izquierda para poder mover al personaje*/
                     console.log("Izquierda")
+                    
                     /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
-                    if(maze[posy][posx -  1] === ' ' || maze[posy][posx - 1] === 'p'){
+                    if(maze[posy][posx -  1] === ' ' && maze[posy][posx - 1] === 'p'){
                         setPosx(posx-1) //Moviendo el jugador a la izquierda.
                         console.log("Sí llegué")
                     }
                 }else if(e.key === "ArrowRight"){
+                    
                     /*Detectando la flecha derecha para poder mover al personaje*/
                     console.log("Derecha")
 
                     /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
-                    if(maze[posy][posx + 1] === ' ' || maze[posy][posx + 1] === 'p'){
+                    if(maze[posy][posx + 1] === ' ' && maze[posy][posx + 1] === 'p'){
+                     
                         setPosx(posx+1) //Moviendo el jugador a la derecha.
                         console.log("Sí llegué")
                     }
 
                 }else if(e.key === "ArrowDown"){
+                   
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Abajo")
 
                     /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
                     
-                    if(maze[posy + 1][posx] === ' ' || maze[posy + 1][posx] === 'p'){
+                    if(maze[posy + 1][posx] === ' ' && maze[posy + 1][posx] === 'p'){
+                    
                         setPosy(posy+1) //Bajando al jugador.
                         console.log("Sí llegué")
                     }
+
                 }else if(e.key === "ArrowUp"){
+                    
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Arriba")
 
                     /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
-                    if(maze[posy - 1][posx] === ' ' || maze[posy - 1][posx] === 'p'){
+                    if(maze[posy - 1][posx] === ' ' && maze[posy - 1][posx] === 'p'){
+                    
                         setPosy(posy-1) //Subiendo al jugador.
                         console.log("Sí llegué")
                     }
@@ -128,7 +141,7 @@ function Laberinto () {
 
     })
 }
-    movimientos()
+    movimientos() //Llamando al método para detectar los movimientos.
 
     return(
         <div className="Maze"> {/*Padre de todos los div's*/}
@@ -138,7 +151,7 @@ function Laberinto () {
                 { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
                     maze.map((elementos) => 
                         /*Entrando a la matriz que se trae desde el API*/
-                     <div className='Todo' key={Math.random()}>{
+                     <div className='Todo' key={Math.random()} onKeyDown={movimientos}>{
                         elementos.map((elemento) => {
                             /*Leyendo cada elemento de la matriz que se trae desde el API*/
                             if(elemento === "-" || elemento === "|" || elemento === "+"){
