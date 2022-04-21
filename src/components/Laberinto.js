@@ -48,7 +48,7 @@ function Laberinto () {
     const [maze, setMaze] = useState([]) //Se le pasa un array vacío porque va a ser el estado del maze; la variable laberinto va a ser el estado inicial del maze.
                                                     //setLaberinto permite actualizar el estado del laberinto.
 
-    /*Estados para las posiciones x e y*/
+    /*Estados para las posiciones 'x' y 'y'*/
     //Se inicializa en 1, dado que el jugador está en (1,1)
     const [posx, setPosx] = useState(1)
     const [posy, setPosy] = useState(1)
@@ -106,7 +106,6 @@ function Laberinto () {
         movimientos()
     }, [])
 
-
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
 
@@ -116,7 +115,7 @@ function Laberinto () {
         function obtenerLaberinto  () {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=3&h=2' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=3&h=3' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
