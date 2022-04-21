@@ -56,29 +56,48 @@ function Laberinto () {
 
     function movimientos() {
         window.addEventListener("load", ()=> {
-
-            const vel = 50
-            const top = 0
-            const left = 0
             
             /*Identificando las teclas que se presionan*/
             window.addEventListener("keydown", (e) => {
                 if(e.key === "ArrowLeft"){
                     /*Detectando la flecha izquierda para poder mover al personaje*/
                     console.log("Izquierda")
-                    //moverIzquierda()
+                    /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
+                    if(maze[posy][posx -  1] === ' ' || maze[posy][posx - 1] === 'p'){
+                        setPosx(posx-1)
+                        console.log("Sí llegué")
+                    }
                 }else if(e.key === "ArrowRight"){
                     /*Detectando la flecha derecha para poder mover al personaje*/
                     console.log("Derecha")
-                    //moverDerecha()
+
+                    /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
+                    if(maze[posy][posx + 1] === ' ' || maze[posy][posx + 1] === 'p'){
+                        setPosx(posx+1)
+                        console.log("Sí llegué")
+                    }
+
                 }else if(e.key === "ArrowDown"){
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Abajo")
-                    //moverAbajo()
+
+                    /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
+                    
+                    if(maze[posy + 1][posx] === ' ' || maze[posy + 1][posx] === 'p'){
+                        setPosx(posy+1)
+                        console.log("Sí llegué")
+                    }
                 }else if(e.key === "ArrowUp"){
+                    
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Arriba")
-                    //moverArriba()
+
+                    /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
+                    if(maze[posy + 1][posx] === ' ' || maze[posy + 1][posx] === 'p'){
+                        
+                        setPosx(posy-1)
+                        console.log("Sí llegué")
+                    }
                 }
             })
 
