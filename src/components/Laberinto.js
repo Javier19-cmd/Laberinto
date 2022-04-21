@@ -3,12 +3,13 @@ import axios from 'axios'
 import styles from './Laberinto.css'
 import Personaje from './Personaje.jpg'
 import Metas from './Metas.jpg'
+import pared from './pared.svg'
 
 //Función que procesa los elementos y los manda a la pantalla. Este lee a todas las paredes.
 function Paredes(){
     return(
         <div className='Pared'>
-            <img className='Paredes' src="https://www.svgrepo.com/show/124383/brick-wall.svg"/>
+            <img className='Paredes' src={pared}/>
         </div> /*Haciendo div para los elemenetos paredes*/
     )
 }
