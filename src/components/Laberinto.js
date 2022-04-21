@@ -54,13 +54,49 @@ function Laberinto () {
     const [posy, setPosy] = useState(1)
 
 
+    function movimientos() {
+        window.addEventListener("load", ()=> {
+
+            const vel = 50
+            const top = 0
+            const left = 0
+            
+            /*Identificando las teclas que se presionan*/
+            window.addEventListener("keydown", (e) => {
+                if(e.key === "ArrowLeft"){
+                    /*Detectando la flecha izquierda para poder mover al personaje*/
+                    console.log("Izquierda")
+                    //moverIzquierda()
+                }else if(e.key === "ArrowRight"){
+                    /*Detectando la flecha derecha para poder mover al personaje*/
+                    console.log("Derecha")
+                    //moverDerecha()
+                }else if(e.key === "ArrowDown"){
+                    /*Detectando la flecha de abajo para poder mover al personaje*/
+                    console.log("Abajo")
+                    //moverAbajo()
+                }else if(e.key === "ArrowUp"){
+                    /*Detectando la flecha de abajo para poder mover al personaje*/
+                    console.log("Arriba")
+                    //moverArriba()
+                }
+            })
+
+    })
+}
+    /*Haciendo efectiva la función de movimientos*/
+    useEffect(() => {
+        movimientos()
+    }, [])
+
+
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
 
         //Función que manda a pedir el laberinto al API. Esta función va a hacer un pedido asincrónico. Va a tener un async y un await. 
         //El async determina que la función va a tener un pedido asincrónico y cuando se hace el pedido, no se sabe cuánto va a tardar. En ese momento se pone un await
         //para decirle que espere hasta que se haga la consulta.
-        const obtenerLaberinto = () => {
+        function obtenerLaberinto  () {
 
             //Trayendo el laberinto desde el API.
              const url = 'https://maze.juanelcaballo.club/?type=json&w=3&h=3' //Url del API. 
