@@ -84,18 +84,16 @@ function Laberinto () {
                     /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
                     
                     if(maze[posy + 1][posx] === ' ' || maze[posy + 1][posx] === 'p'){
-                        setPosx(posy+1)
+                        setPosy(posy+1)
                         console.log("Sí llegué")
                     }
                 }else if(e.key === "ArrowUp"){
-                    
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Arriba")
 
                     /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
                     if(maze[posy - 1][posx] === ' ' || maze[posy - 1][posx] === 'p'){
-                        
-                        setPosx(posy-1)
+                        setPosy(posy-1)
                         console.log("Sí llegué")
                     }
                 }
@@ -118,7 +116,7 @@ function Laberinto () {
         function obtenerLaberinto  () {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=3&h=3' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=3&h=2' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
