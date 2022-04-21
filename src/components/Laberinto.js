@@ -93,7 +93,7 @@ function Laberinto () {
                     console.log("Arriba")
 
                     /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
-                    if(maze[posy + 1][posx] === ' ' || maze[posy + 1][posx] === 'p'){
+                    if(maze[posy - 1][posx] === ' ' || maze[posy - 1][posx] === 'p'){
                         
                         setPosx(posy-1)
                         console.log("Sí llegué")
