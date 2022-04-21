@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
 import Personaje from './Personaje.jpg'
@@ -53,63 +53,10 @@ function Laberinto () {
     const [posx, setPosx] = useState(1)
     const [posy, setPosy] = useState(1)
 
-
-    function movimientos() {
-        window.addEventListener("load", ()=> {
-            
-            /*Identificando las teclas que se presionan*/
-            window.addEventListener("keydown", (e) => {
-                if(e.key === "ArrowLeft"){
-                    /*Detectando la flecha izquierda para poder mover al personaje*/
-                    console.log("Izquierda")
-                    /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
-                    if(maze[posy][posx -  1] === ' ' || maze[posy][posx - 1] === 'p'){
-                        setPosx(posx-1)
-                        console.log("Sí llegué")
-                    }
-                }else if(e.key === "ArrowRight"){
-                    /*Detectando la flecha derecha para poder mover al personaje*/
-                    console.log("Derecha")
-
-                    /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
-                    if(maze[posy][posx + 1] === ' ' || maze[posy][posx + 1] === 'p'){
-                        setPosx(posx+1)
-                        console.log("Sí llegué")
-                    }
-
-                }else if(e.key === "ArrowDown"){
-                    /*Detectando la flecha de abajo para poder mover al personaje*/
-                    console.log("Abajo")
-
-                    /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
-                    
-                    if(maze[posy + 1][posx] === ' ' || maze[posy + 1][posx] === 'p'){
-                        setPosy(posy+1)
-                        console.log("Sí llegué")
-                    }
-                }else if(e.key === "ArrowUp"){
-                    /*Detectando la flecha de abajo para poder mover al personaje*/
-                    console.log("Arriba")
-
-                    /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
-                    if(maze[posy - 1][posx] === ' ' || maze[posy - 1][posx] === 'p'){
-                        setPosy(posy-1)
-                        console.log("Sí llegué")
-                    }
-                }
-            })
-
-    })
-}
-    /*Haciendo efectiva la función de movimientos*/
-    useEffect(() => {
-        movimientos()
-    }, [])
-
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
 
-        //Función que manda a pedir el laberinto al API. Esta función va a hacer un pedido asincrónico. Va a tener un async y un await. 
+        //Función que manda a pedir el laberinto al API. 
         //El async determina que la función va a tener un pedido asincrónico y cuando se hace el pedido, no se sabe cuánto va a tardar. En ese momento se pone un await
         //para decirle que espere hasta que se haga la consulta.
         function obtenerLaberinto  () {
@@ -132,6 +79,56 @@ function Laberinto () {
 
 
     console.log(maze) //Corroborando la matriz que se trajo del API.
+
+    /*Esta función se encarga de poder hacer los movimeintos del personaje*/
+    function movimientos() {
+        window.addEventListener("load", ()=> {
+            
+            /*Identificando las teclas que se presionan*/
+            document.addEventListener("keydown", (e) => {
+                if(e.key === "ArrowLeft"){
+                    /*Detectando la flecha izquierda para poder mover al personaje*/
+                    console.log("Izquierda")
+                    /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
+                    if(maze[posy][posx -  1] === ' ' || maze[posy][posx - 1] === 'p'){
+                        setPosx(posx-1) //Moviendo el jugador a la izquierda.
+                        console.log("Sí llegué")
+                    }
+                }else if(e.key === "ArrowRight"){
+                    /*Detectando la flecha derecha para poder mover al personaje*/
+                    console.log("Derecha")
+
+                    /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
+                    if(maze[posy][posx + 1] === ' ' || maze[posy][posx + 1] === 'p'){
+                        setPosx(posx+1) //Moviendo el jugador a la derecha.
+                        console.log("Sí llegué")
+                    }
+
+                }else if(e.key === "ArrowDown"){
+                    /*Detectando la flecha de abajo para poder mover al personaje*/
+                    console.log("Abajo")
+
+                    /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
+                    
+                    if(maze[posy + 1][posx] === ' ' || maze[posy + 1][posx] === 'p'){
+                        setPosy(posy+1) //Bajando al jugador.
+                        console.log("Sí llegué")
+                    }
+                }else if(e.key === "ArrowUp"){
+                    /*Detectando la flecha de abajo para poder mover al personaje*/
+                    console.log("Arriba")
+
+                    /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
+                    if(maze[posy - 1][posx] === ' ' || maze[posy - 1][posx] === 'p'){
+                        setPosy(posy-1) //Subiendo al jugador.
+                        console.log("Sí llegué")
+                    }
+                }
+            })
+
+    })
+}
+    movimientos()
 
     return(
         <div className="Maze"> {/*Padre de todos los div's*/}
