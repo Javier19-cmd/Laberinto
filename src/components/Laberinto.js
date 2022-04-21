@@ -42,7 +42,7 @@ function Meta(){
 
 function Laberinto () {
     
-    //Api: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
+    //API: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
 
     //useState sirve para modificar el estado de un componente.
     const [maze, setMaze] = useState([]) //Se le pasa un array vacío porque va a ser el estado del maze; la variable laberinto va a ser el estado inicial del maze.
@@ -96,21 +96,42 @@ function Laberinto () {
                     console.log("Izquierda")
                     
                     /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
-                    if(maze[posy][posx -  1] === ' ' && maze[posy][posx - 1] === 'p'){
+                    /*if(maze[posy][posx -  1] === ' ' && maze[posy][posx - 1] === 'p'){
                         setPosx(posx-1) //Moviendo el jugador a la izquierda.
                         console.log("Sí llegué")
-                    }
+                    }*/
+
+                    maze.map((cosas) => {
+                        cosas.map((cosas2) => {
+                            if(cosas2 === '' && cosas2 === 'p'){
+                                console.log("Sí llegué")
+                            }else{
+                                console.log("Hay pared")
+                            }
+                        })
+                    })
+
                 }else if(e.key === "ArrowRight"){
                     
                     /*Detectando la flecha derecha para poder mover al personaje*/
                     console.log("Derecha")
 
                     /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
-                    if(maze[posy][posx + 1] === ' ' && maze[posy][posx + 1] === 'p'){
+                    /*if(maze[posy][posx + 1] === ' ' && maze[posy][posx + 1] === 'p'){
                      
                         setPosx(posx+1) //Moviendo el jugador a la derecha.
                         console.log("Sí llegué")
-                    }
+                    }*/
+
+                    maze.map((cosas) => {
+                        cosas.map((cosas2) => {
+                            if(cosas2 === '' && cosas2 === 'p'){
+                                console.log("Sí llegué")
+                            }else{
+                                console.log("Hay pared")
+                            }
+                        })
+                    })
 
                 }else if(e.key === "ArrowDown"){
                    
@@ -119,11 +140,21 @@ function Laberinto () {
 
                     /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
                     
-                    if(maze[posy + 1][posx] === ' ' && maze[posy + 1][posx] === 'p'){
+                    /*if(maze[posy + 1][posx] === ' ' && maze[posy + 1][posx] === 'p'){
                     
                         setPosy(posy+1) //Bajando al jugador.
                         console.log("Sí llegué")
-                    }
+                    }*/
+
+                    maze.map((cosas) => {
+                        cosas.map((cosas2) => {
+                            if(cosas2 === ''){
+                                console.log("Sí llegué")
+                            }else{
+                                console.log("Hay pared")
+                            }
+                        })
+                    })
 
                 }else if(e.key === "ArrowUp"){
                     
@@ -131,11 +162,21 @@ function Laberinto () {
                     console.log("Arriba")
 
                     /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
-                    if(maze[posy - 1][posx] === ' ' && maze[posy - 1][posx] === 'p'){
+                    /*if(maze[posy - 1][posx] === ' ' && maze[posy - 1][posx] === 'p'){
                     
                         setPosy(posy-1) //Subiendo al jugador.
                         console.log("Sí llegué")
-                    }
+                    }*/
+
+                    maze.map((cosas) => {
+                        cosas.map((cosas2) => {
+                            if(cosas2 === '' && cosas2 === 'p'){
+                                console.log("Sí llegué")
+                            }else{
+                                console.log("Hay pared")
+                            }
+                        })
+                    })
                 }
             })
 
@@ -151,7 +192,7 @@ function Laberinto () {
                 { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
                     maze.map((elementos) => 
                         /*Entrando a la matriz que se trae desde el API*/
-                     <div className='Todo' key={Math.random()} onKeyDown={movimientos}>{
+                     <div className='Todo' key={Math.random()}>{
                         elementos.map((elemento) => {
                             /*Leyendo cada elemento de la matriz que se trae desde el API*/
                             if(elemento === "-" || elemento === "|" || elemento === "+"){
@@ -178,7 +219,7 @@ function Laberinto () {
                             }
                         })}
                         </div>
-                    )}
+                    )}     
             </div>
         </div>
     )
