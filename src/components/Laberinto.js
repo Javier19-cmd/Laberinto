@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
+import Personaje from './Personaje.jpg'
+import Metas from './Metas.jpg'
 
 //Función que procesa los elementos y los manda a la pantalla. Este lee a todas las paredes.
 function Paredes(){
@@ -23,7 +25,7 @@ function Otro(){
 function Jugador(){
     return(
         <div className='Jugador'>
-            <img className='Heroe' src="https://i.pinimg.com/564x/c2/a5/2f/c2a52f32defd4686ca3b0b3703aaba6a.jpg"/>
+            <img className='Heroe' src={Personaje}/>
         </div> /*Haciendo div para el jugador*/
     )
 }
@@ -32,7 +34,7 @@ function Jugador(){
 function Meta(){
     return(
         <div className='Meta'>
-            <img className='Metas' src='https://previews.123rf.com/images/romanbykhalets/romanbykhalets1903/romanbykhalets190300283/124220354-bandera-de-acabado-símbolo-del-campeonato-exitoso-símbolo-de-carreras-línea-de-meta-diseño-plano-eps.jpg'/>
+            <img className='Metas' src={Metas}/>
         </div> /*Haciendo div para el espacio vacío*/
     )
 }
@@ -46,8 +48,9 @@ function Laberinto () {
                                                     //setLaberinto permite actualizar el estado del laberinto.
 
     /*Estados para las posiciones x e y*/
-    const [posx, setPosx] = useState(0)
-    const [posy, setPosy] = useState(0)
+    //Se inicializa en 1, dado que el jugador está en (1,1)
+    const [posx, setPosx] = useState(1)
+    const [posy, setPosy] = useState(1)
 
 
     //useEffect sirve para poder ver efectos secundarios en componentes.
