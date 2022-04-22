@@ -74,7 +74,7 @@ function Laberinto () {
         function obtenerLaberinto  () {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=2&h=2' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=5' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
