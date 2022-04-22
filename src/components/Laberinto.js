@@ -1,55 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
-import Personaje from './Personaje.jpg'
-import Metas from './Metas.jpg'
-import pared from './pared.svg'
+import Paredes from './Paredes.js'
+import Otro from './Otro.js'
+import Meta from './Meta.js'
+import Jugador from './Jugador.js'
 
-//Función que procesa los elementos y los manda a la pantalla. Este lee a todas las paredes.
-function Paredes(){
-    return(
-        <div className='Pared'>
-            <img className='Paredes' src={pared}/>
-        </div> /*Haciendo div para los elemenetos paredes*/
-    )
-}
-
-
-//Función que procesa los elementos y los manda a la pantalla. Este lee el espacio vacío.
-function Otro(){
-    return(
-        <div className='Otro'></div> /*Haciendo div para el espacio vacío*/
-    )
-}
-
-//Función que procesa los elementos y los manda a la pantalla. Este lee al elemento del jugador.
-function Jugador({x, y}){
-
-    const style = {
-        position: 'relative',
-        left: `${x*10}px`, 
-        top: `${y*10}px`,
-        width: `75px`, /*Ancho*/
-        height: `75px`, /*Altura*/
-        background: `blue` /*Color*/
-        //margin: `2px` /*Margen del cinco pixeles*/
-    }
-
-    return(
-        
-        <img className='Heroe' src={Personaje} style={style}/>
-        
-    )
-}
-
-//Función que procesa los elementos y los manda a la pantalla.
-function Meta(){
-    return(
-        <div className='Meta'>
-            <img className='Metas' src={Metas}/>
-        </div> /*Haciendo div para el espacio vacío*/
-    )
-}
 
 function Laberinto () {
     
