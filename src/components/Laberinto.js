@@ -26,8 +26,9 @@ function Otro(){
 function Jugador({x, y}){
 
     const style = {
-        left: `${x}px`, 
-        top: `${y}px`,
+        position: 'relative',
+        left: `${x*10}px`, 
+        top: `${y*10}px`,
         width: `75px`, /*Ancho*/
         height: `75px`, /*Altura*/
         background: `blue` /*Color*/
@@ -35,9 +36,9 @@ function Jugador({x, y}){
     }
 
     return(
-        <div className='Jugador'>
-            <img className='Heroe' src={Personaje} style={style}/>
-        </div> /*Haciendo div para el jugador*/
+        
+        <img className='Heroe' src={Personaje} style={style}/>
+        
     )
 }
 
@@ -93,10 +94,9 @@ function Laberinto () {
     console.log(maze) //Corroborando la matriz que se trajo del API.
 
     /*Esta función se encarga de poder hacer los movimeintos del personaje*/
-    function movimientos() {
+     useEffect(() => {
         
         //Event Listener de la ventana.
-        window.addEventListener("load", () => {
             
             /*Identificando las teclas que se presionan*/
             window.addEventListener("keydown", (e) => {
@@ -105,7 +105,7 @@ function Laberinto () {
                     /*Detectando la flecha izquierda para poder mover al personaje*/
                     console.log("Izquierda")
                     
-                    setPosx((oldPosx) => oldPosx + 10)
+                    setPosx((oldPosx) => oldPosx - 1)
 
                     /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
                     /*if(maze[posy][posx -  1] === ' ' && maze[posy][posx - 1] === 'p'){
@@ -128,7 +128,7 @@ function Laberinto () {
                     /*Detectando la flecha derecha para poder mover al personaje*/
                     console.log("Derecha")
 
-                    setPosy((oldPosy) => oldPosy - 10)
+                    setPosy((oldPosx) => oldPosx + 1)
 
                     /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
                     /*if(maze[posy][posx + 1] === ' ' && maze[posy][posx + 1] === 'p'){
@@ -152,7 +152,7 @@ function Laberinto () {
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Abajo")
 
-                    setPosy((oldPosy) => oldPosy + 10)
+                    setPosy((oldPosy) => oldPosy - 1)
 
                     /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
                     
@@ -177,7 +177,7 @@ function Laberinto () {
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Arriba")
 
-                    setPosy((oldPosy) => oldPosy - 10)
+                    setPosy((oldPosy) => oldPosy - 1)
 
                     /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
                     /*if(maze[posy - 1][posx] === ' ' && maze[posy - 1][posx] === 'p'){
@@ -197,15 +197,14 @@ function Laberinto () {
                     })*/
                 }
             })
-
-    })
-}
+}, [])
     //movimientos() //Llamando al método para detectar los movimientos.
 
     return(
         <div className="Maze"> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Ahora trata de llegar a la meta</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
+
             <div className='Mapa'> {/*Se mapea la matriz de laberinto y luego se mapea cada matriz que hay dentro de la matriz grande.*/}
                 { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
                     maze.map((elementos) => 
@@ -225,11 +224,13 @@ function Laberinto () {
                                         key={Math.random()}
                                         />
                             }if(elemento === "p"){
-                                /*Llamando al método de Jugador para que cree un div personalizado*/
-                                return <Jugador
-                                    key={Math.random()}
-                                />
-                            }if(elemento === "g"){
+                                return<Jugador
+                                        key={Math.random()}
+                                        x={parseInt(posx, 10)}
+                                        y={parseInt(posy, 10)}
+                                    />
+                            }
+                            if(elemento === "g"){
                                 /*Llamando al elemento meta para dibujarla en el canvas*/
                                 return <Meta
                                     key={Math.random()}
@@ -242,23 +243,8 @@ function Laberinto () {
             {
                 /*Buscando al jugador*/
             }
-            <div className='Jug' tabIndex={0} onKeyDown={movimientos}>
-                {
-                    maze.map((elementos) => {
-                        elementos.map((elemento) => {
-                        /*Leyendo cada elemento de la matriz que se trae desde el API*/
-                        if(elemento === "p"){
-                            /*Llamando al método de Jugador para que cree un div personalizado*/
-                            return <Jugador
-                                key={Math.random()}
-                                x={posx}
-                                y={posy}
-                            />
-                        }
-                    })
-                    })
-                }
-            </div>
+            
+                
         </div>
     )
 
