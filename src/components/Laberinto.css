@@ -29,14 +29,14 @@ h2{
 }
 
 /*Propiedades del jugador*/
-.Jugador{
+/*.Jugador{
     
-    width: 75px; /*Ancho*/
-    height: 75px; /*Altura*/
-    background: blue; /*Color*/
-    margin: 2px; /*Margen del cinco pixeles*/
+ /*   width: 75px; /*Ancho*/
+   /* height: 75px; /*Altura*/
+    /*background: blue; /*Color*/
+   /* margin: 2px; /*Margen del cinco pixeles*/
 
-}
+/*}
 
 /*Propiedades de la meta*/
 .Meta{

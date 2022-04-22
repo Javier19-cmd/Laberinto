@@ -23,10 +23,20 @@ function Otro(){
 }
 
 //Función que procesa los elementos y los manda a la pantalla. Este lee al elemento del jugador.
-function Jugador(){
+function Jugador({x, y}){
+
+    const style = {
+        left: `${x}px`, 
+        top: `${y}px`,
+        width: `75px`, /*Ancho*/
+        height: `75px`, /*Altura*/
+        background: `blue` /*Color*/
+        //margin: `2px` /*Margen del cinco pixeles*/
+    }
+
     return(
         <div className='Jugador'>
-            <img className='Heroe' src={Personaje}/>
+            <img className='Heroe' src={Personaje} style={style}/>
         </div> /*Haciendo div para el jugador*/
     )
 }
@@ -64,7 +74,7 @@ function Laberinto () {
         function obtenerLaberinto  () {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=5&h=4' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=2&h=2' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -89,19 +99,21 @@ function Laberinto () {
         window.addEventListener("load", () => {
             
             /*Identificando las teclas que se presionan*/
-            document.addEventListener("keydown", (e) => {
+            window.addEventListener("keydown", (e) => {
                 if(e.key === "ArrowLeft"){
                     
                     /*Detectando la flecha izquierda para poder mover al personaje*/
                     console.log("Izquierda")
                     
+                    setPosx((oldPosx) => oldPosx + 10)
+
                     /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
                     /*if(maze[posy][posx -  1] === ' ' && maze[posy][posx - 1] === 'p'){
                         setPosx(posx-1) //Moviendo el jugador a la izquierda.
                         console.log("Sí llegué")
                     }*/
 
-                    maze.map((cosas) => {
+                    /*maze.map((cosas) => {
                         cosas.map((cosas2) => {
                             if(cosas2 === '' && cosas2 === 'p'){
                                 console.log("Sí llegué")
@@ -109,12 +121,14 @@ function Laberinto () {
                                 console.log("Hay pared")
                             }
                         })
-                    })
+                    })*/
 
                 }else if(e.key === "ArrowRight"){
                     
                     /*Detectando la flecha derecha para poder mover al personaje*/
                     console.log("Derecha")
+
+                    setPosy((oldPosy) => oldPosy - 10)
 
                     /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
                     /*if(maze[posy][posx + 1] === ' ' && maze[posy][posx + 1] === 'p'){
@@ -123,7 +137,7 @@ function Laberinto () {
                         console.log("Sí llegué")
                     }*/
 
-                    maze.map((cosas) => {
+                    /*maze.map((cosas) => {
                         cosas.map((cosas2) => {
                             if(cosas2 === '' && cosas2 === 'p'){
                                 console.log("Sí llegué")
@@ -131,12 +145,14 @@ function Laberinto () {
                                 console.log("Hay pared")
                             }
                         })
-                    })
+                    })*/
 
                 }else if(e.key === "ArrowDown"){
                    
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Abajo")
+
+                    setPosy((oldPosy) => oldPosy + 10)
 
                     /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
                     
@@ -146,7 +162,7 @@ function Laberinto () {
                         console.log("Sí llegué")
                     }*/
 
-                    maze.map((cosas) => {
+                   /* maze.map((cosas) => {
                         cosas.map((cosas2) => {
                             if(cosas2 === ''){
                                 console.log("Sí llegué")
@@ -154,12 +170,14 @@ function Laberinto () {
                                 console.log("Hay pared")
                             }
                         })
-                    })
+                    })*/
 
                 }else if(e.key === "ArrowUp"){
                     
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Arriba")
+
+                    setPosy((oldPosy) => oldPosy - 10)
 
                     /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
                     /*if(maze[posy - 1][posx] === ' ' && maze[posy - 1][posx] === 'p'){
@@ -168,7 +186,7 @@ function Laberinto () {
                         console.log("Sí llegué")
                     }*/
 
-                    maze.map((cosas) => {
+                    /*maze.map((cosas) => {
                         cosas.map((cosas2) => {
                             if(cosas2 === '' && cosas2 === 'p'){
                                 console.log("Sí llegué")
@@ -176,13 +194,13 @@ function Laberinto () {
                                 console.log("Hay pared")
                             }
                         })
-                    })
+                    })*/
                 }
             })
 
     })
 }
-    movimientos() //Llamando al método para detectar los movimientos.
+    //movimientos() //Llamando al método para detectar los movimientos.
 
     return(
         <div className="Maze"> {/*Padre de todos los div's*/}
@@ -220,6 +238,26 @@ function Laberinto () {
                         })}
                         </div>
                     )}     
+            </div>
+            {
+                /*Buscando al jugador*/
+            }
+            <div className='Jug' tabIndex={0} onKeyDown={movimientos}>
+                {
+                    maze.map((elementos) => {
+                        elementos.map((elemento) => {
+                        /*Leyendo cada elemento de la matriz que se trae desde el API*/
+                        if(elemento === "p"){
+                            /*Llamando al método de Jugador para que cree un div personalizado*/
+                            return <Jugador
+                                key={Math.random()}
+                                x={posx}
+                                y={posy}
+                            />
+                        }
+                    })
+                    })
+                }
             </div>
         </div>
     )
