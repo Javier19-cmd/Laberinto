@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+/*
+ Nombre: Javier Valle
+ Carnet: 20159 
+*/
+
+import React, { useState, useEffect} from 'react'
 import Metas from './Metas.jpg'
 
 //Función que procesa los elementos y los manda a la pantalla.

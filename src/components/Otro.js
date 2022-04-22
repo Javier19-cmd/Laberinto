@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+/*
+ Nombre: Javier Valle
+ Carnet: 20159 
+*/
+
+import React, { useState, useEffect } from 'react'
 
 //Función que procesa los elementos y los manda a la pantalla. Este lee el espacio vacío.
 function Otro(){

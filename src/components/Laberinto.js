@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+/*
+ Nombre: Javier Valle
+ Carnet: 20159 
+*/
+
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from './Laberinto.css'
 import Paredes from './Paredes.js'

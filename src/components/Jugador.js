@@ -1,5 +1,10 @@
+/*
+ Nombre: Javier Valle
+ Carnet: 20159 
+*/
+
 import Personaje from './Personaje.jpg'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 //Función que procesa los elementos y los manda a la pantalla. Este lee al elemento del jugador.
 export default function Jugador({x, y}){

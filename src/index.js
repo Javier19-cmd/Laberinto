@@ -1,4 +1,8 @@
 /* 
+
+Nombre: Javier Valle
+Carnet: 20159
+
 Instalaciones realizadas: 
 
 1. Webpack: npm install webpack webpack-cli. Para reinstalar node_modules se corre npm install.
