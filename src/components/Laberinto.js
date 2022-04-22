@@ -35,7 +35,8 @@ function Jugador({x, y}){
     }
 
     return(
-        <div className='Jugador'>
+        <div className='Jug
+        ador'>
             <img className='Heroe' src={Personaje} style={style}/>
         </div> /*Haciendo div para el jugador*/
     )
