@@ -21,13 +21,16 @@ function Laberinto () {
 
     /*Estados para las posiciones 'x' y 'y'*/
     //Se inicializa en 1, dado que el jugador está en (1,1)
-    const [posx, setPosx] = useState(1)
-    const [posy, setPosy] = useState(1)
+    const [posx, setPosx] = useState(0)
+    const [posy, setPosy] = useState(0)
+
+    //Estado del movimiento. Esto determina si hay una pared o un espacio vacío.
+    const [mov, setMov] = useState(false)
 
     //Estado para ganar.
     const [ganar, setGanar] = useState(false)
 
-    //const referencia = useRef()
+    
 
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
