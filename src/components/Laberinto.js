@@ -4,7 +4,6 @@
 */
 
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import styles from './Laberinto.css'
 import Paredes from './Paredes.js'
 import Otro from './Otro.js'
@@ -199,16 +198,6 @@ function Laberinto () {
                         setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia arriba.
                         console.log("Sí llegué")
                     }*/
-
-                    /*maze.map((cosas) => {
-                        cosas.map((cosas2) => {
-                            if(cosas2 === '' && cosas2 === 'p'){
-                                console.log("Sí llegué")
-                            }else{
-                                console.log("Hay pared")
-                            }
-                        })
-                    })*/
                 }
             })
 }, [])
