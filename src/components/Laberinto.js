@@ -25,6 +25,9 @@ function Laberinto () {
     const [posx, setPosx] = useState(1)
     const [posy, setPosy] = useState(1)
 
+    //Estado para ganar.
+    const [ganar, setGanar] = useState(false)
+
     //const referencia = useRef()
 
     //useEffect sirve para poder ver efectos secundarios en componentes.
@@ -36,7 +39,7 @@ function Laberinto () {
         function obtenerLaberinto  () {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=3&h=3' //Url del API. 
+             const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -66,10 +69,23 @@ function Laberinto () {
                     /*Detectando la flecha izquierda para poder mover al personaje*/
                     console.log("Izquierda")
                     
-                    setPosx((oldPosx) => oldPosx - 1) //Moviendo al personaje a la izquierda.
+                    setPosx((oldPosx) => 
+                    /*{
+
+                        //Variable que tiene la nueva posición del jugador en x-.
+                        const posicion = oldPosx - 1
+
+                        if(posicion === '+' || posicion === '-' || posicion === '|'){
+                            console.log("Pared")
+                        }else if (posicion === ' ' || posicion === 'p'){
+                            return {posicion}
+                        }else if(posicion === 'g'){
+                            console.log("Ganaste")
+                        }
+                    }*/ oldPosx - 1) //Moviendo al personaje a la izquierda.
 
                     /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
-                    /*if(maze[posy][posx -  1] === ' ' || maze[posy][posx - 1] === 'p'){
+                    /*if(maze?.[posy]?.[posx -  1] === ' ' || maze?.[posy]?.[posx -  1] === 'p'){
                         setPosx((oldPosx) => oldPosx - 1)
                         console.log("Sí llegué")
                     }*/
@@ -89,10 +105,22 @@ function Laberinto () {
                     /*Detectando la flecha derecha para poder mover al personaje*/
                     console.log("Derecha")
 
-                    setPosx((oldPosx) => oldPosx + 1) //Moviendo al personaje a la derecha.
+                    setPosx((oldPosx) => /*{
+                        
+                        //Variable que tiene la nueva posición del jugador en x+.
+                        const posicion = oldPosx + 1
+
+                        if(posicion === '+' || posicion === '-' || posicion === '|'){
+                            console.log("Pared")
+                        }else if (oldPosx - 1 === ' ' || oldPosx - 1 === 'p'){
+                            return {posicion}
+                        }else if(posicion === 'g'){
+                            console.log("Ganaste")
+                        }
+                    }*/ oldPosx + 1)
 
                     /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
-                    /*if(maze[posy][posx + 1] === ' ' || maze[posy][posx + 1] === 'p'){
+                    /*if(maze?.[posy]?.[posx + 1] === ' ' || maze?.[posy]?.[posx + 1] === 'p'){
                      
                         setPosx((oldPosx) => oldPosx + 1) //Moviendo al personaje a la derecha.
                         console.log("Sí llegué")
@@ -113,11 +141,23 @@ function Laberinto () {
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Abajo")
 
-                    setPosy((oldPosy) => oldPosy + 1) //Moviendo al personaje hacia abajo.
+                    setPosy((oldPosy) => /*{
+                        
+                        //Variable que tiene la nueva posición del jugador en y-.
+                        const posicion = oldPosy + 1
+
+                        if(posicion === '+' || posicion === '-' || posicion === '|'){
+                            console.log("Pared")
+                        }else if (posicion === ' ' || posicion === 'p'){
+                            return {posicion}
+                        }else if(oldPosy - 1 === 'g'){
+                            console.log("Ganaste")
+                        }
+                    }*/ oldPosy + 1)
 
                     /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
                     
-                    /*if(maze[posy + 1][posx] === ' ' && maze[posy + 1][posx] === 'p'){
+                    /*if(maze?.[posy + 1]?.[posx] === ' ' || maze?.[posy + 1]?.[posx] === 'p'){
                     
                         setPosy((oldPosy) => oldPosy + 1) //Moviendo al personaje hacia abajo.
                         console.log("Sí llegué")
@@ -138,10 +178,23 @@ function Laberinto () {
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Arriba")
 
-                    setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia arriba.
+                    setPosy((oldPosy) => /*{
+                        
+                        //Variable que tiene la nueva posición del jugador en y+.
+                        const posicion = oldPosy - 1
+
+                        if(posicion === '+' || posicion === '-' || posicion === '|'){
+                            console.log("Pared")
+                        }else if (posicion === ' ' || posicion === 'p'){
+                            return posicion
+                        }else if(oldPosy - 1 === 'g'){
+                            console.log("Ganaste")
+                        }
+                    }*/
+                    oldPosy - 1)
 
                     /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
-                    /*if(maze[posy - 1][posx] === ' ' && maze[posy - 1][posx] === 'p'){
+                    /*if(maze?.[posy - 1]?.[posx] === ' ' || maze?.[posy - 1]?.[posx] === 'p'){
                     
                         setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia arriba.
                         console.log("Sí llegué")
