@@ -78,7 +78,7 @@ function Laberinto () {
                     //Viendo si hay un espacio vacío.
                     if (maze[posx - 1] === ' '){
                         //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
-                        setPosx(posx - 1)
+                        setPosx((oldPosx) => oldPosx - 1)
                     }else if(maze[posx - 1] === '+' || maze[posx - 1] === '-' || maze[posx - 1] === '|'){
                         console.log("Hay pared")
                     }else if(maze[posx - 1] === 'g'){
