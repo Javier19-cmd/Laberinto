@@ -3,7 +3,7 @@
  Carnet: 20159 
 */
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './Laberinto.css'
 import Paredes from './Paredes.js'
 import Otro from './Otro.js'
@@ -21,15 +21,13 @@ function Laberinto () {
 
     /*Estados para las posiciones 'x' y 'y'*/
     //Se inicializa en 1, dado que el jugador está en (1,1)
-    const [posx, setPosx] = useState(0)
-    const [posy, setPosy] = useState(0)
-
-    //Estado del movimiento. Esto determina si hay una pared o un espacio vacío.
-    const [mov, setMov] = useState(false)
+    const [posx, setPosx] = useState(1)
+    const [posy, setPosy] = useState(1)
 
     //Estado para ganar.
     const [ganar, setGanar] = useState(false)
 
+    const laberintoRef = useRef()
     
 
     //useEffect sirve para poder ver efectos secundarios en componentes.
@@ -70,21 +68,23 @@ function Laberinto () {
                     
                     /*Detectando la flecha izquierda para poder mover al personaje*/
                     console.log("Izquierda")
-                    
-                    setPosx((oldPosx) => 
-                    /*{
+                
+                    setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda.
 
-                        //Variable que tiene la nueva posición del jugador en x-.
-                        const posicion = oldPosx - 1
+                    //setPosx((oldPosx) => oldPosx - 1)
 
-                        if(posicion === '+' || posicion === '-' || posicion === '|'){
-                            console.log("Pared")
-                        }else if (posicion === ' ' || posicion === 'p'){
-                            return {posicion}
-                        }else if(posicion === 'g'){
-                            console.log("Ganaste")
-                        }
-                    }*/ oldPosx - 1) //Moviendo al personaje a la izquierda.
+                    //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
+
+                    //Viendo si hay un espacio vacío.
+                    if (maze[posx - 1] === ' '){
+                        //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
+                        setPosx(posx - 1)
+                    }else if(maze[posx - 1] === '+' || maze[posx - 1] === '-' || maze[posx - 1] === '|'){
+                        console.log("Hay pared")
+                    }else if(maze[posx - 1] === 'g'){
+                        alert("Ganaste!")
+                    }
+    
 
                     /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
                     /*if(maze?.[posy]?.[posx -  1] === ' ' || maze?.[posy]?.[posx -  1] === 'p'){
@@ -107,19 +107,19 @@ function Laberinto () {
                     /*Detectando la flecha derecha para poder mover al personaje*/
                     console.log("Derecha")
 
-                    setPosx((oldPosx) => /*{
-                        
-                        //Variable que tiene la nueva posición del jugador en x+.
-                        const posicion = oldPosx + 1
+                    //setPosx(posx + 1) //Haciendo set del movimiento hacia la derecha.
 
-                        if(posicion === '+' || posicion === '-' || posicion === '|'){
-                            console.log("Pared")
-                        }else if (oldPosx - 1 === ' ' || oldPosx - 1 === 'p'){
-                            return {posicion}
-                        }else if(posicion === 'g'){
-                            console.log("Ganaste")
-                        }
-                    }*/ oldPosx + 1)
+                    setPosx((oldPosx) => oldPosx + 1) //Haciendo set del movimiento hacia la derecha.
+
+                    //Viendo si hay un espacio vacío.
+                    if (maze[posx + 1] === ' '){
+                        //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
+                        setPosx(posx + 1)
+                    }else if(maze[posx + 1] === '+' || maze[posx + 1] === '-' || maze[posx + 1] === '|'){
+                        console.log("Hola")
+                    }else if(maze[posx + 1] === 'g'){
+                        alert("Ganaste!")
+                    }
 
                     /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
                     /*if(maze?.[posy]?.[posx + 1] === ' ' || maze?.[posy]?.[posx + 1] === 'p'){
@@ -143,19 +143,21 @@ function Laberinto () {
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Abajo")
 
-                    setPosy((oldPosy) => /*{
-                        
-                        //Variable que tiene la nueva posición del jugador en y-.
-                        const posicion = oldPosy + 1
+                    //setPosy(posy + 1)
 
-                        if(posicion === '+' || posicion === '-' || posicion === '|'){
-                            console.log("Pared")
-                        }else if (posicion === ' ' || posicion === 'p'){
-                            return {posicion}
-                        }else if(oldPosy - 1 === 'g'){
-                            console.log("Ganaste")
-                        }
-                    }*/ oldPosy + 1)
+                    setPosy((oldPosy) => oldPosy + 1) //Haciendo set del movimiento hacia la derecha.
+
+                    //setPosx((oldPosx) => oldPosx + 1)
+
+                    //Viendo si hay un espacio vacío.
+                    if (maze[posy + 1] === ' '){
+                        //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
+                        setPosy(posy - 1)
+                    }else if(maze[posy + 1] === '+' || maze[posy + 1] === '-' || maze[posy + 1] === '|'){
+                        console.log("Hola")
+                    }else if(maze[posy + 1] === 'g'){
+                        alert("Ganaste!")
+                    }
 
                     /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
                     
@@ -180,20 +182,21 @@ function Laberinto () {
                     /*Detectando la flecha de abajo para poder mover al personaje*/
                     console.log("Arriba")
 
-                    setPosy((oldPosy) => /*{
-                        
-                        //Variable que tiene la nueva posición del jugador en y+.
-                        const posicion = oldPosy - 1
+                    //setPosy(posy + 1)
 
-                        if(posicion === '+' || posicion === '-' || posicion === '|'){
-                            console.log("Pared")
-                        }else if (posicion === ' ' || posicion === 'p'){
-                            return posicion
-                        }else if(oldPosy - 1 === 'g'){
-                            console.log("Ganaste")
-                        }
-                    }*/
-                    oldPosy - 1)
+                    setPosy((oldPosy) => oldPosy - 1) //Haciendo set del movimiento hacia la derecha.
+
+                    //setPosx((oldPosx) => oldPosx + 1)
+
+                    //Viendo si hay un espacio vacío.
+                    if (maze[posy - 1] === ' '){
+                        //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
+                        setPosy(posy - 1)
+                    }else if(maze[posy - 1] === '+' || maze[posy - 1] === '-' || maze[posy - 1] === '|'){
+                        console.log("Hola")
+                    }else if(maze[posy - 1] === 'g'){
+                        alert("Ganaste!")
+                    }
 
                     /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
                     /*if(maze?.[posy - 1]?.[posx] === ' ' || maze?.[posy - 1]?.[posx] === 'p'){
