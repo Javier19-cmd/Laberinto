@@ -69,7 +69,7 @@ function Laberinto () {
             //obtenerLaberinto()
 
             //Menos uno de la posición en x del personaje. Posición del personaje en x.
-            const lpixelx = posx-1
+            const lpixelx = posx - 1
             //Posición del personaje en y.
             const lpixely = posy 
 
@@ -77,23 +77,20 @@ function Laberinto () {
             const indexX = Math.ceil((lpixelx/75) - 1) //Posición en x.
             const indexY = Math.ceil((lpixely/75)) //Posición en y.
 
-
             console.log(maze, indexX, indexY) //Posición del personaje en el maze.
             console.log(lpixelx)              //Posición inicial del personaje en x. 
-
-            console.log(maze)
 
             /*Detectando la flecha izquierda para poder mover al personaje*/
             console.log("Izquierda")
         
             //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda.
 
-            setPosx((oldPosx) => oldPosx - 1)
+            //setPosx((oldPosx) => oldPosx - 1)
 
             //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
 
             //Viendo si hay un espacio vacío.
-            if (maze[posx - 1] === ' '){
+            if (maze[indexX][indexY] === ' '){
                 //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la izquierda.
                 setPosx((oldPosx) => oldPosx - 1) //Moviendo al personaje hacia la izquierda.
             }else if(maze[indexX][indexY] === '+' || maze[indexX][indexY] === '-' || maze[indexX][indexY] === '|'){
@@ -108,16 +105,6 @@ function Laberinto () {
                 setPosx((oldPosx) => oldPosx - 1)
                 console.log("Sí llegué")
             }*/
-
-            /*maze.map((cosas) => {
-                cosas.map((cosas2) => {
-                    if(cosas2 === '' && cosas2 === 'p'){
-                        console.log("Sí llegué")
-                    }else{
-                        console.log("Hay pared")
-                    }
-                })
-            })*/
 
         }else if(e.key === "ArrowRight"){
             
@@ -229,7 +216,9 @@ function Laberinto () {
 
         //Event Listener de la ventana.
             /*Identificando las teclas que se presionan*/
-            window.addEventListener("keydown", mov)
+            //window.addEventListener("keydown", mov)
+
+            window.removeEventListener("keydown", mov)
 }, [])
     //movimientos() //Llamando al método para detectar los movimientos.
 
