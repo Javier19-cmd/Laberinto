@@ -24,6 +24,8 @@ function Laberinto () {
     const [posx, setPosx] = useState(1)
     const [posy, setPosy] = useState(1)
 
+    console.log(posx)
+
     //Estado para ganar.
     const [ganar, setGanar] = useState(false)
 
@@ -43,179 +45,191 @@ function Laberinto () {
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
-                .then(datos => setMaze(datos))//Se llama a setLaberinto y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
+                .then(datos => setMaze(datos))//Se llama a setMaze y se le pasa como parámetro el result.data que es la matriz de que se pidió desde el API.
              //console.log(result.data) //Imprimiendo la data del API.
              //console.log(resultado) //Imprimiendo las cosas que trajo del API.
-             //La función para actualizar elementos es setLaberinto.
+             //La función para actualizar elementos es setMaze.
             //console.log(maze)
         }
 
         obtenerLaberinto() //Poniendo a funcionar la promesa.
-
+        //console.log(maze)
     }, []) //Si no se pone un array vacío, entonces la función se ejecuta en un loop infinito.
 
 
-    console.log(maze) //Corroborando la matriz que se trajo del API.
+   // console.log(maze) //Corroborando la matriz que se trajo del API.
+
+    //Función del movimiento.
+
+    const mov = (e) =>{
+
+        if(e.key === "ArrowLeft"){
+            //setPosx((oldPosx) => oldPosx - 1)
+
+            //obtenerLaberinto()
+
+            //Menos uno de la posición en x del personaje. Posición del personaje en x.
+            const lpixelx = posx-1
+            //Posición del personaje en y.
+            const lpixely = posy 
+
+            //Obteniendo la posición del personaje en el maze.
+            const indexX = Math.ceil((lpixelx/75) - 1) //Posición en x.
+            const indexY = Math.ceil((lpixely/75)) //Posición en y.
+
+
+            console.log(maze, indexX, indexY) //Posición del personaje en el maze.
+            console.log(lpixelx)              //Posición inicial del personaje en x. 
+
+            console.log(maze)
+
+            /*Detectando la flecha izquierda para poder mover al personaje*/
+            console.log("Izquierda")
+        
+            //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda.
+
+            setPosx((oldPosx) => oldPosx - 1)
+
+            //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
+
+            //Viendo si hay un espacio vacío.
+            if (maze[posx - 1] === ' '){
+                //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la izquierda.
+                setPosx((oldPosx) => oldPosx - 1) //Moviendo al personaje hacia la izquierda.
+            }else if(maze[indexX][indexY] === '+' || maze[indexX][indexY] === '-' || maze[indexX][indexY] === '|'){
+                console.log("Hay pared")
+            }else if(maze[indexX][indexY] === 'g'){
+                alert("Ganaste!")
+            }
+
+
+            /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
+            /*if(maze?.[posy]?.[posx -  1] === ' ' || maze?.[posy]?.[posx -  1] === 'p'){
+                setPosx((oldPosx) => oldPosx - 1)
+                console.log("Sí llegué")
+            }*/
+
+            /*maze.map((cosas) => {
+                cosas.map((cosas2) => {
+                    if(cosas2 === '' && cosas2 === 'p'){
+                        console.log("Sí llegué")
+                    }else{
+                        console.log("Hay pared")
+                    }
+                })
+            })*/
+
+        }else if(e.key === "ArrowRight"){
+            
+            /*Detectando la flecha derecha para poder mover al personaje*/
+            console.log("Derecha")
+
+            //setPosx(posx + 1) //Haciendo set del movimiento hacia la derecha.
+
+            setPosx((oldPosx) => oldPosx + 1) //Haciendo set del movimiento hacia la derecha.
+
+            //Viendo si hay un espacio vacío.
+            if (maze[posx + 1] === ' '){
+                //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
+                setPosx(posx + 1)
+            }else if(maze[posx + 1] === '+' || maze[posx + 1] === '-' || maze[posx + 1] === '|'){
+                console.log("Hola")
+            }else if(maze[posx + 1] === 'g'){
+                alert("Ganaste!")
+            }
+
+            /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
+            /*if(maze?.[posy]?.[posx + 1] === ' ' || maze?.[posy]?.[posx + 1] === 'p'){
+             
+                setPosx((oldPosx) => oldPosx + 1) //Moviendo al personaje a la derecha.
+                console.log("Sí llegué")
+            }*/
+
+            /*maze.map((cosas) => {
+                cosas.map((cosas2) => {
+                    if(cosas2 === '' && cosas2 === 'p'){
+                        console.log("Sí llegué")
+                    }else{
+                        console.log("Hay pared")
+                    }
+                })
+            })*/
+
+        }else if(e.key === "ArrowDown"){
+           
+            /*Detectando la flecha de abajo para poder mover al personaje*/
+            console.log("Abajo")
+
+            //setPosy(posy + 1)
+
+            setPosy((oldPosy) => oldPosy + 1) //Haciendo set del movimiento hacia la derecha.
+
+            //setPosx((oldPosx) => oldPosx + 1)
+
+            //Viendo si hay un espacio vacío.
+            if (maze[posy + 1] === ' '){
+                //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
+                setPosy(posy - 1)
+            }else if(maze[posy + 1] === '+' || maze[posy + 1] === '-' || maze[posy + 1] === '|'){
+                console.log("Hola")
+            }else if(maze[posy + 1] === 'g'){
+                alert("Ganaste!")
+            }
+
+            /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
+            
+            /*if(maze?.[posy + 1]?.[posx] === ' ' || maze?.[posy + 1]?.[posx] === 'p'){
+            
+                setPosy((oldPosy) => oldPosy + 1) //Moviendo al personaje hacia abajo.
+                console.log("Sí llegué")
+            }*/
+
+           /* maze.map((cosas) => {
+                cosas.map((cosas2) => {
+                    if(cosas2 === ''){
+                        console.log("Sí llegué")
+                    }else{
+                        console.log("Hay pared")
+                    }
+                })
+            })*/
+
+        }else if(e.key === "ArrowUp"){
+            
+            /*Detectando la flecha de abajo para poder mover al personaje*/
+            console.log("Arriba")
+
+            //setPosy(posy + 1)
+
+            setPosy((oldPosy) => oldPosy - 1) //Haciendo set del movimiento hacia la derecha.
+
+            //setPosx((oldPosx) => oldPosx + 1)
+
+            //Viendo si hay un espacio vacío.
+            if (maze[posy - 1] === ' '){
+                //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
+                setPosy(posy - 1)
+            }else if(maze[posy - 1] === '+' || maze[posy - 1] === '-' || maze[posy - 1] === '|'){
+                console.log("Hola")
+            }else if(maze[posy - 1] === 'g'){
+                alert("Ganaste!")
+            }
+
+            /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
+            /*if(maze?.[posy - 1]?.[posx] === ' ' || maze?.[posy - 1]?.[posx] === 'p'){
+            
+                setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia arriba.
+                console.log("Sí llegué")
+            }*/
+        }
+    }
 
     /*Esta función se encarga de poder hacer los movimeintos del personaje*/
      useEffect(() => {
-        
+
         //Event Listener de la ventana.
-            
             /*Identificando las teclas que se presionan*/
-            window.addEventListener("keydown", (e) => {
-                if(e.key === "ArrowLeft"){
-
-                    //Menos uno de la posición en x del personaje. Posición del personaje en x.
-                    const lpixelx = posx-1
-                    //Posición del personaje en y.
-                    const lpixely = posy 
-
-                    const indexX = Math.ceil((lpixelx/75) - 1) 
-                    const indexY = Math.ceil((lpixely/75) - 1)
-
-                    console.log(maze[indexX][indexY])
-                    
-                    /*Detectando la flecha izquierda para poder mover al personaje*/
-                    console.log("Izquierda")
-                
-                    //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda.
-
-                    setPosx((oldPosx) => oldPosx - 1)
-
-                    //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
-
-                    //Viendo si hay un espacio vacío.
-                    if (maze[posx - 1] === ' '){
-                        //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
-                        setPosx((oldPosx) => oldPosx - 1)
-                    }else if(maze[posx - 1]%75 === '+' || maze[posx - 1] === '-' || maze[posx - 1] === '|'){
-                        console.log("Hay pared")
-                    }else if(maze[posx - 1] === 'g'){
-                        alert("Ganaste!")
-                    }
-    
-
-                    /*Viendo si la posición de la izquierda está vacía o si en la posición está el jugador*/
-                    /*if(maze?.[posy]?.[posx -  1] === ' ' || maze?.[posy]?.[posx -  1] === 'p'){
-                        setPosx((oldPosx) => oldPosx - 1)
-                        console.log("Sí llegué")
-                    }*/
-
-                    /*maze.map((cosas) => {
-                        cosas.map((cosas2) => {
-                            if(cosas2 === '' && cosas2 === 'p'){
-                                console.log("Sí llegué")
-                            }else{
-                                console.log("Hay pared")
-                            }
-                        })
-                    })*/
-
-                }else if(e.key === "ArrowRight"){
-                    
-                    /*Detectando la flecha derecha para poder mover al personaje*/
-                    console.log("Derecha")
-
-                    //setPosx(posx + 1) //Haciendo set del movimiento hacia la derecha.
-
-                    setPosx((oldPosx) => oldPosx + 1) //Haciendo set del movimiento hacia la derecha.
-
-                    //Viendo si hay un espacio vacío.
-                    if (maze[posx + 1] === ' '){
-                        //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
-                        setPosx(posx + 1)
-                    }else if(maze[posx + 1] === '+' || maze[posx + 1] === '-' || maze[posx + 1] === '|'){
-                        console.log("Hola")
-                    }else if(maze[posx + 1] === 'g'){
-                        alert("Ganaste!")
-                    }
-
-                    /*Viendo si la posición de la derecha está vacía o si en la posición está el jugador*/
-                    /*if(maze?.[posy]?.[posx + 1] === ' ' || maze?.[posy]?.[posx + 1] === 'p'){
-                     
-                        setPosx((oldPosx) => oldPosx + 1) //Moviendo al personaje a la derecha.
-                        console.log("Sí llegué")
-                    }*/
-
-                    /*maze.map((cosas) => {
-                        cosas.map((cosas2) => {
-                            if(cosas2 === '' && cosas2 === 'p'){
-                                console.log("Sí llegué")
-                            }else{
-                                console.log("Hay pared")
-                            }
-                        })
-                    })*/
-
-                }else if(e.key === "ArrowDown"){
-                   
-                    /*Detectando la flecha de abajo para poder mover al personaje*/
-                    console.log("Abajo")
-
-                    //setPosy(posy + 1)
-
-                    setPosy((oldPosy) => oldPosy + 1) //Haciendo set del movimiento hacia la derecha.
-
-                    //setPosx((oldPosx) => oldPosx + 1)
-
-                    //Viendo si hay un espacio vacío.
-                    if (maze[posy + 1] === ' '){
-                        //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
-                        setPosy(posy - 1)
-                    }else if(maze[posy + 1] === '+' || maze[posy + 1] === '-' || maze[posy + 1] === '|'){
-                        console.log("Hola")
-                    }else if(maze[posy + 1] === 'g'){
-                        alert("Ganaste!")
-                    }
-
-                    /*Viendo si la posición de abajo está vacía o si en la posición está el jugador*/
-                    
-                    /*if(maze?.[posy + 1]?.[posx] === ' ' || maze?.[posy + 1]?.[posx] === 'p'){
-                    
-                        setPosy((oldPosy) => oldPosy + 1) //Moviendo al personaje hacia abajo.
-                        console.log("Sí llegué")
-                    }*/
-
-                   /* maze.map((cosas) => {
-                        cosas.map((cosas2) => {
-                            if(cosas2 === ''){
-                                console.log("Sí llegué")
-                            }else{
-                                console.log("Hay pared")
-                            }
-                        })
-                    })*/
-
-                }else if(e.key === "ArrowUp"){
-                    
-                    /*Detectando la flecha de abajo para poder mover al personaje*/
-                    console.log("Arriba")
-
-                    //setPosy(posy + 1)
-
-                    setPosy((oldPosy) => oldPosy - 1) //Haciendo set del movimiento hacia la derecha.
-
-                    //setPosx((oldPosx) => oldPosx + 1)
-
-                    //Viendo si hay un espacio vacío.
-                    if (maze[posy - 1] === ' '){
-                        //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
-                        setPosy(posy - 1)
-                    }else if(maze[posy - 1] === '+' || maze[posy - 1] === '-' || maze[posy - 1] === '|'){
-                        console.log("Hola")
-                    }else if(maze[posy - 1] === 'g'){
-                        alert("Ganaste!")
-                    }
-
-                    /*Viendo si la posición de arriba está vacía o si en la posición está el jugador*/
-                    /*if(maze?.[posy - 1]?.[posx] === ' ' || maze?.[posy - 1]?.[posx] === 'p'){
-                    
-                        setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia arriba.
-                        console.log("Sí llegué")
-                    }*/
-                }
-            })
+            window.addEventListener("keydown", mov)
 }, [])
     //movimientos() //Llamando al método para detectar los movimientos.
 
