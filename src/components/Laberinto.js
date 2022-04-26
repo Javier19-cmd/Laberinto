@@ -55,7 +55,9 @@ function Laberinto () {
 
    // console.log(maze) //Corroborando la matriz que se trajo del API.
 
-    //Función del movimiento.
+   //console.log("Laberinto antes del event listener: ",maze) //Comprobando el array del laberinto.
+
+   //Función del movimiento.
 
     const mov = (e) =>{
 
@@ -72,30 +74,29 @@ function Laberinto () {
             const indexX = Math.ceil((lpixelx/75) - 1) //Posición en x.
             const indexY = Math.ceil((lpixely/75)) //Posición en y.
 
-            console.log("Hola", maze)
+            console.log("Este es el maze cuando se presiona el botón de la izquierda: ", maze)
 
             //console.log(maze, indexX, indexY) //Posición del personaje en el maze.
-            console.log(lpixelx)              //Posición inicial del personaje en x. 
+            console.log(lpixelx)               //Posición inicial del personaje en x. 
 
-            /*Detectando la flecha izquierda para    poder mover al personaje*/
+            console.log(lpixely)
+              
+            console.log("Datos del lab", maze)
+
+            /*Detectando la flecha izquierda para poder mover al personaje*/
             console.log("Izquierda")
         
-            //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda.
-
-            setPosx((oldPosx) => oldPosx - 1)
-            setPosy((oldPosy) => oldPosy)
+            //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda
 
             //setPosx(indexX)
 
             //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
-
+            
             //Viendo si hay un espacio vacío.
             if (maze[indexX][indexY] === ' '){
-                //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la izquierda.
-                setPosx((oldPosx) => oldPosx - 1) //Moviendo al personaje hacia la izquierda.
-            }else if(maze[indexX][indexY] === '+' || maze[indexX][indexY] === '-' || maze[indexX][indexY] === '|'){
-                console.log("Hay pared")
-            }else if(maze[indexX] === 'g'){
+                //setPosx((oldPosx) => oldPosx - 1)
+                setPosx(posx + 1) //Moviendo al personaje hacia la izquierda.
+            }else if(maze[indexX][indexY] === 'g'){
                 alert("Ganaste!")
             }
 
@@ -174,7 +175,7 @@ function Laberinto () {
 
     //window.addEventListener("keydown", mov)
 
-    console.log(maze)
+    //console.log("Laberinto luego del event listener: ",maze)
 
 
     return(
