@@ -69,9 +69,9 @@ function Laberinto () {
                     /*Detectando la flecha izquierda para poder mover al personaje*/
                     console.log("Izquierda")
                 
-                    setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda.
+                    //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda.
 
-                    //setPosx((oldPosx) => oldPosx - 1)
+                    setPosx((oldPosx) => oldPosx - 1)
 
                     //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
 
