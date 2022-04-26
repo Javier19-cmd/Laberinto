@@ -216,9 +216,9 @@ function Laberinto () {
 
         //Event Listener de la ventana.
             /*Identificando las teclas que se presionan*/
-            //window.addEventListener("keydown", mov)
-
-            window.removeEventListener("keydown", mov)
+            window.addEventListener("keydown", () => {
+                window.removeEventListener("keydown", mov)
+            })
 }, [])
     //movimientos() //Llamando al método para detectar los movimientos.
 
