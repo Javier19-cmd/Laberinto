@@ -72,17 +72,20 @@ function Laberinto () {
             const indexX = Math.ceil((lpixelx/75) - 1) //Posición en x.
             const indexY = Math.ceil((lpixely/75)) //Posición en y.
 
-            console.log(maze)
+            console.log("Hola", maze)
 
             //console.log(maze, indexX, indexY) //Posición del personaje en el maze.
             console.log(lpixelx)              //Posición inicial del personaje en x. 
 
-            /*Detectando la flecha izquierda para poder mover al personaje*/
+            /*Detectando la flecha izquierda para    poder mover al personaje*/
             console.log("Izquierda")
         
             //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda.
 
-            //setPosx((oldPosx) => oldPosx - 1)
+            setPosx((oldPosx) => oldPosx - 1)
+            setPosy((oldPosy) => oldPosy)
+
+            //setPosx(indexX)
 
             //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
 
