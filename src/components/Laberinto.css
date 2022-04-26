@@ -47,13 +47,6 @@ h2{
      margin: 2px; /*Ancho*/
 }
 
-/*Tamaños de la imagen del jugador*/
-
-.Heroe{
-    width: 75px; /*Ancho*/
-    height: 75px; /*Altura*/
-}
-
 /*Tamaños de la imagen de la Meta*/
 
 .Metas{
