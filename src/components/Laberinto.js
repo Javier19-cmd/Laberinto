@@ -63,6 +63,8 @@ function Laberinto () {
 
         if(e.key === "ArrowLeft"){
             //setPosx((oldPosx) => oldPosx - 1)
+            
+            //Posición inicial del personaje.
 
             //Menos uno de la posición en x del personaje. 
             //Posición del personaje en x.
@@ -79,7 +81,7 @@ function Laberinto () {
             //console.log(maze, indexX, indexY) //Posición del personaje en el maze.
             console.log(lpixelx)               //Posición inicial del personaje en x. 
 
-            console.log(lpixely)
+            console.log(lpixely)               //Posición del personaje ne y.
               
             console.log("Datos del lab", maze)
 
@@ -95,7 +97,7 @@ function Laberinto () {
             //Viendo si hay un espacio vacío.
             if (maze[indexX][indexY] === ' '){
                 //setPosx((oldPosx) => oldPosx - 1)
-                setPosx(posx + 1) //Moviendo al personaje hacia la izquierda.
+                setPosx(lpixelx - 1) //Moviendo al personaje hacia la izquierda.
             }else if(maze[indexX][indexY] === 'g'){
                 alert("Ganaste!")
             }
