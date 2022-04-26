@@ -65,6 +65,16 @@ function Laberinto () {
             /*Identificando las teclas que se presionan*/
             window.addEventListener("keydown", (e) => {
                 if(e.key === "ArrowLeft"){
+
+                    //Menos uno de la posición en x del personaje. Posición del personaje en x.
+                    const lpixelx = posx-1
+                    //Posición del personaje en y.
+                    const lpixely = posy 
+
+                    const indexX = Math.ceil((lpixelx/75) - 1) 
+                    const indexY = Math.ceil((lpixely/75) - 1)
+
+                    console.log(maze[indexX][indexY])
                     
                     /*Detectando la flecha izquierda para poder mover al personaje*/
                     console.log("Izquierda")
@@ -79,7 +89,7 @@ function Laberinto () {
                     if (maze[posx - 1] === ' '){
                         //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
                         setPosx((oldPosx) => oldPosx - 1)
-                    }else if(maze[posx - 1] === '+' || maze[posx - 1] === '-' || maze[posx - 1] === '|'){
+                    }else if(maze[posx - 1]%75 === '+' || maze[posx - 1] === '-' || maze[posx - 1] === '|'){
                         console.log("Hay pared")
                     }else if(maze[posx - 1] === 'g'){
                         alert("Ganaste!")
