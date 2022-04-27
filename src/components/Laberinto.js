@@ -9,6 +9,7 @@ import Paredes from './Paredes.js'
 import Otro from './Otro.js'
 import Meta from './Meta.js'
 import Jugador from './Jugador.js'
+import Puerta from './Puerta.js'
 
 
 function Laberinto () {
@@ -258,23 +259,25 @@ function Laberinto () {
                                         />
                             }if(elemento === "p"){
                                 return <>
-
                                  <Jugador
                                         key={Math.random()}
                                         x={parseInt(posx, 10)} /*Se parsea a entero para que no se pase como string*/
                                         y={parseInt(posy, 10)} /*Se parsea a entero para que no se pase como string*/
                                     />
-
-                                    <Paredes
+                                    {/*Creando puerta de salida*/}
+                                    <Puerta
                                         key = {Math.random()}
                                     />
                                 </>
                             }
                             if(elemento === "g"){
                                 /*Llamando al elemento meta para dibujarla en el canvas*/
-                                return <Meta
+                                return <> 
+                                <Meta
                                     key={Math.random()}
-                                />                                
+                                />
+
+                                </>                         
                             }
                         })}
                         </div>
