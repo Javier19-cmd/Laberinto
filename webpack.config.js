@@ -12,7 +12,7 @@ export default{
       directory: 'dist',
     },
     compress: true,
-    port: 4000
+    port: 9000
   },
 
   //Configurando Babel, css y aceptando imágenes.
