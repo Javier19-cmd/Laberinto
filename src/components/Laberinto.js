@@ -35,6 +35,8 @@ function Laberinto () {
         //para decirle que espere hasta que se haga la consulta.
         const obtenerLaberinto = () => {
 
+            /*Link del API: https://maze.juanelcaballo.club/?type=json&w=4&h=4*/
+
             //Trayendo el laberinto desde el API.
              const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
             //Pedido con fetch.
