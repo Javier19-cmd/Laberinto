@@ -12,7 +12,7 @@ import Jugador from './Jugador.js'
 import Puerta from './Puerta.js'
 
 
-function Laberinto () {
+function Laberinto ({an, al}) {
     
     //API: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
 
@@ -36,7 +36,7 @@ function Laberinto () {
         const obtenerLaberinto = () => {
 
             //Trayendo el laberinto desde el API.
-             const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //Url del API. 
+             const url = `https://maze.juanelcaballo.club/?type=json&w=${an}&h=${al}` //Url del API. 
             //Pedido con fetch.
              fetch(url)
                 .then(res => res.json()) 
@@ -272,12 +272,9 @@ function Laberinto () {
                             }
                             if(elemento === "g"){
                                 /*Llamando al elemento meta para dibujarla en el canvas*/
-                                return <> 
-                                <Meta
+                                return <Meta
                                     key={Math.random()}
-                                />
-
-                                </>                         
+                                />                      
                             }
                         })}
                         </div>

@@ -32,13 +32,21 @@ import * as ReactDOMClient from 'react-dom/client' //Importando el ReactDOMClien
 import styles from './style.css' 
 import Laberinto from './components/Laberinto.js'
 
-
 const App = () => {
+
+    //Variable que guarda el ancho del laberinto.
+    const an = prompt("Ingrese el ancho del laberinto ")
+
+    //Variable que guarda el alto del laberinto.
+    const al = prompt("Ingrese el alto del laberinto ")
 
     return(
         <>
             <h1>Laberinto</h1>
-            <Laberinto/>    
+            <Laberinto 
+            an={an}
+            al={al} 
+            />    
         </>
     )
 }
