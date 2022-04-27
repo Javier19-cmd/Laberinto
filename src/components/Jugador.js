@@ -10,9 +10,9 @@ import React, { useState, useEffect } from 'react'
 export default function Jugador({x, y}){
 
     const style = {
-        position: 'relative',
-        left: `${x*10}px`, 
-        top: `${y*10}px`,
+        position: 'absolute',
+        left: `${x}px`, 
+        top: `${y}px`,
         width: `75px`, /*Ancho*/
         height: `75px`, /*Altura*/
         background: `blue` /*Color*/ //Este se va a dejar por si no llegara cargar la imagen del personaje.

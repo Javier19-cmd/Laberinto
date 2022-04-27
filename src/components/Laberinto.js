@@ -21,8 +21,8 @@ function Laberinto () {
 
     /*Estados para las posiciones 'x' y 'y'*/
     //Se inicializa en 1, dado que el jugador está en (1,1)
-    const [posx, setPosx] = useState(1)
-    const [posy, setPosy] = useState(1)
+    const [posx, setPosx] = useState(75)
+    const [posy, setPosy] = useState(75)
 
     console.log(posx)
 
@@ -69,11 +69,13 @@ function Laberinto () {
             //Menos uno de la posición en x del personaje. 
             //Posición del personaje en x.
             const lpixelx = posx - 1
+
+            console.log(lpixelx)
             //Posición del personaje en y.
             const lpixely = posy 
 
             //Obteniendo la posición del personaje en el maze.
-            const indexX = Math.ceil((lpixelx/75) - 1) //Posición en x.
+            const indexX = Math.ceil((lpixelx/75)) //Posición en x.
             const indexY = Math.ceil((lpixely/75)) //Posición en y.
 
             ///console.log("Este es el maze cuando se presiona el botón de la izquierda: ", maze)
@@ -95,75 +97,121 @@ function Laberinto () {
             //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
             
             //Viendo si hay un espacio vacío.
-            if(maze[posy][posx - 1] === ' '){
-                setPosx(posx - 1) //Moviendo al personaje hacia la izquierda.
-                console.log("Hola")
-            }else if(maze[posy][posx - 1] === '|' || maze[posy][posx - 1] === '+' || maze[posy][posx - 1] === '-'){
-                console.log("Puta madre")
+            if(maze[indexY][indexX] === ' '){
+              setPosx((oldPosx) => oldPosx - 10) //Moviendo al personaje hacia la izquierda.
             }
 
         }else if(e.key === "ArrowRight"){
+
+            //Menos uno de la posición en x del personaje. 
+            //Posición del personaje en x.
+            const lpixelx = posx + 1
+
+            console.log({lpixelx})
+            //Posición del personaje en y.
+            const lpixely = posy 
+
+            //Obteniendo la posición del personaje en el maze.
+            const indexX = Math.ceil((lpixelx/75)) //Posición en x.
+            const indexY = Math.ceil((lpixely/75)) //Posición en y.
+
             
             /*Detectando la flecha derecha para poder mover al personaje*/
-            console.log("Derecha")
+            console.log("Derecha", indexX, indexY)
 
             //setPosx(posx + 1) //Haciendo set del movimiento hacia la derecha.
 
-            setPosx((oldPosx) => oldPosx + 1) //Haciendo set del movimiento hacia la derecha.
+            //setPosx((oldPosx) => oldPosx + 1) //Haciendo set del movimiento hacia la derecha.
+
+            console.log('ww',maze[indexX][indexY],maze)
 
             //Viendo si hay un espacio vacío.
-            if (maze[posx + 1] === ' '){
-                //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
-                setPosx(posx + 1)
-            }else if(maze[posx + 1] === '+' || maze[posx + 1] === '-' || maze[posx + 1] === '|'){
-                console.log("Hola")
-            }else if(maze[posx + 1] === 'g'){
-                alert("Ganaste!")
+            if(maze[indexX][indexY] === ' '){
+                setPosx((oldPosx) => oldPosx + 10) //Moviendo al personaje hacia la izquierda.
             }
 
         }else if(e.key === "ArrowDown"){
            
-            /*Detectando la flecha de abajo para poder mover al personaje*/
+            //setPosx((oldPosx) => oldPosx - 1)
+            
+            //Posición inicial del personaje.
+
+            //Menos uno de la posición en x del personaje. 
+            //Posición del personaje en x.
+            const lpixelx = posx
+
+            console.log(lpixelx)
+            //Posición del personaje en y.
+            const lpixely = posy + 1
+
+            //Obteniendo la posición del personaje en el maze.
+            const indexX = Math.ceil((lpixelx/75)) //Posición en x.
+            const indexY = Math.ceil((lpixely/75)) //Posición en y.
+
+            ///console.log("Este es el maze cuando se presiona el botón de la izquierda: ", maze)
+
+            //console.log(maze, indexX, indexY) //Posición del personaje en el maze.
+            //console.log(lpixelx)               //Posición inicial del personaje en x. 
+
+            //console.log(lpixely)               //Posición del personaje ne y.
+              
+            //console.log("Datos del lab", maze)
+
+            /*Detectando la flecha izquierda para poder mover al personaje*/
             console.log("Abajo")
+        
+            //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda
 
-            //setPosy(posy + 1)
+            //setPosx(indexX)
 
-            setPosy((oldPosy) => oldPosy + 1) //Haciendo set del movimiento hacia la derecha.
-
-            //setPosx((oldPosx) => oldPosx + 1)
-
+            //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
+            
             //Viendo si hay un espacio vacío.
-            if (maze[posy + 1] === ' '){
-                //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
-                setPosy(posy - 1)
-            }else if(maze[posy + 1] === '+' || maze[posy + 1] === '-' || maze[posy + 1] === '|'){
-                console.log("Hola")
-            }else if(maze[posy + 1] === 'g'){
-                alert("Ganaste!")
+            if(maze[indexX][indexY] === ' '){
+              setPosy((oldPosy) => oldPosy + 10) //Moviendo al personaje hacia la izquierda.
             }
-
         }else if(e.key === "ArrowUp"){
             
-            /*Detectando la flecha de abajo para poder mover al personaje*/
-            console.log("Arriba")
+            //setPosx((oldPosx) => oldPosx - 1)
+            
+            //Posición inicial del personaje.
 
-            //setPosy(posy + 1)
+            //Menos uno de la posición en x del personaje. 
+            //Posición del personaje en x.
+            const lpixelx = posx
 
-            setPosy((oldPosy) => oldPosy - 1) //Haciendo set del movimiento hacia la derecha.
+            console.log(lpixelx)
+            //Posición del personaje en y.
+            const lpixely = posy - 1
 
-            //setPosx((oldPosx) => oldPosx + 1)
+            //Obteniendo la posición del personaje en el maze.
+            const indexX = Math.ceil((lpixelx/75)) //Posición en x.
+            const indexY = Math.ceil((lpixely/75)) //Posición en y.
 
+            ///console.log("Este es el maze cuando se presiona el botón de la izquierda: ", maze)
+
+            //console.log(maze, indexX, indexY) //Posición del personaje en el maze.
+            //console.log(lpixelx)               //Posición inicial del personaje en x. 
+
+            //console.log(lpixely)               //Posición del personaje ne y.
+              
+            //console.log("Datos del lab", maze)
+
+            /*Detectando la flecha izquierda para poder mover al personaje*/
+            console.log("Abajo")
+        
+            //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda
+
+            //setPosx(indexX)
+
+            //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
+            
             //Viendo si hay un espacio vacío.
-            if (maze[posy - 1] === ' '){
-                //setPosy((oldPosy) => oldPosy - 1) //Moviendo al personaje hacia la derecha.
-                setPosy(posy - 1)
-            }else if(maze[posy - 1] === '+' || maze[posy - 1] === '-' || maze[posy - 1] === '|'){
-                console.log("Hola")
-            }else if(maze[posy - 1] === 'g'){
-                alert("Ganaste!")
+            if(maze[indexX][indexY] === ' '){
+              setPosy((oldPosy) => oldPosy - 10) //Moviendo al personaje hacia la izquierda.
             }
         }
-    }, [maze])
+    }, [maze, posx, posy])
 
     /*Esta función se encarga de poder hacer los movimeintos del personaje*/
      useEffect(() => {
