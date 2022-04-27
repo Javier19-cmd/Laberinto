@@ -99,6 +99,8 @@ function Laberinto () {
             //Viendo si hay un espacio vacío.
             if(maze[indexY][indexX] === ' '){
               setPosx((oldPosx) => oldPosx - 10) //Moviendo al personaje hacia la izquierda.
+            }else if(maze[indexY][indexX] === 'g'){
+                alert("Ganaste!")
             }
 
         }else if(e.key === "ArrowRight"){
@@ -128,6 +130,8 @@ function Laberinto () {
             //Viendo si hay un espacio vacío.
             if(maze[indexX][indexY] === ' '){
                 setPosx((oldPosx) => oldPosx + 10) //Moviendo al personaje hacia la izquierda.
+            }else if(maze[indexX][indexY] === 'g'){
+                alert("Ganaste!")
             }
 
         }else if(e.key === "ArrowDown"){
@@ -169,7 +173,10 @@ function Laberinto () {
             //Viendo si hay un espacio vacío.
             if(maze[indexX][indexY] === ' '){
               setPosy((oldPosy) => oldPosy + 10) //Moviendo al personaje hacia la izquierda.
+            }else if(maze[indexX][indexY] === 'g'){
+                alert("Ganaste!")
             }
+
         }else if(e.key === "ArrowUp"){
             
             //setPosx((oldPosx) => oldPosx - 1)
@@ -198,7 +205,7 @@ function Laberinto () {
             //console.log("Datos del lab", maze)
 
             /*Detectando la flecha izquierda para poder mover al personaje*/
-            console.log("Abajo")
+            console.log("Arriba")
         
             //setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda
 
@@ -209,7 +216,9 @@ function Laberinto () {
             //Viendo si hay un espacio vacío.
             if(maze[indexX][indexY] === ' '){
               setPosy((oldPosy) => oldPosy - 10) //Moviendo al personaje hacia la izquierda.
-            }
+            }else if(maze[indexX][indexY] === 'g'){
+                alert("Ganaste")
+            } 
         }
     }, [maze, posx, posy])
 

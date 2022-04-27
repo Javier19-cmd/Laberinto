@@ -17,7 +17,7 @@ h2{
     width: 75px; /*Ancho de prueba*/
     height: 75px; /*Se ve limitado por el min-height del parent, el cual es el .Mapa*/ 
     background: white; /*Ancho*/
-    margin: 2px; /*Margen*/
+    /*margin: 2px; /*Margen*/
 }
 
 /*Propiedades de los espacios vacíos.*/
@@ -25,7 +25,7 @@ h2{
     
     width: 75px; /*Ancho*/
     height: 75px; /*Alto*/
-    margin: 2px; /*Margen del cinco pixeles*/
+    /*margin: 2px; /*Margen del cinco pixeles*/
 }
 
 /*Propiedades del jugador*/
@@ -44,7 +44,7 @@ h2{
     width: 75px; /*Ancho*/
     height: 75px; /*Alto*/
     /*background: red; /*Color*/
-     margin: 2px; /*Ancho*/
+     /*margin: 2px; /*Ancho*/
 }
 
 /*Tamaños de la imagen de la Meta*/
