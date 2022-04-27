@@ -15,8 +15,8 @@ export default function Jugador({x, y}){
         top: `${y}px`,
         width: `75px`, /*Ancho*/
         height: `75px`, /*Altura*/
-        background: `blue` /*Color*/ //Este se va a dejar por si no llegara cargar la imagen del personaje.
-        //margin: `2px` /*Margen del cinco pixeles*/
+        background: `blue`, /*Color*/ //Este se va a dejar por si no llegara cargar la imagen del personaje.
+        margin: `2px` /*Margen del cinco pixeles*/
     }
 
     return(

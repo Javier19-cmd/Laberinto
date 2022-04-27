@@ -22,7 +22,6 @@ h2{
 
 /*Propiedades de los espacios vacíos.*/
 .Otro{
-    
     width: 75px; /*Ancho*/
     height: 75px; /*Alto*/
     /*margin: 2px; /*Margen del cinco pixeles*/
@@ -58,6 +57,7 @@ h2{
 .Paredes{
     width: 75px; /*Ancho*/
     height: 75px; /*Alto*/
+    margin: 1px;
 }
 
 /*Propiedades de la puerta*/
