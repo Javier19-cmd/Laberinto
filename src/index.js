@@ -38,7 +38,6 @@ const App = () => {
     return(
         <>
             <h1>Laberinto</h1>
-            <input></input>
             <Laberinto/>    
         </>
     )

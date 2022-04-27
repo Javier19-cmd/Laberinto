@@ -25,11 +25,7 @@ function Laberinto () {
     const [posy, setPosy] = useState(75)
 
     console.log(posx)
-
-    //Estado para ganar.
-    const [ganar, setGanar] = useState(false)
     
-
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
 
@@ -261,11 +257,18 @@ function Laberinto () {
                                         key={Math.random()}
                                         />
                             }if(elemento === "p"){
-                                return<Jugador
+                                return <>
+
+                                 <Jugador
                                         key={Math.random()}
                                         x={parseInt(posx, 10)} /*Se parsea a entero para que no se pase como string*/
                                         y={parseInt(posy, 10)} /*Se parsea a entero para que no se pase como string*/
                                     />
+
+                                    <Paredes
+                                        key = {Math.random()}
+                                    />
+                                </>
                             }
                             if(elemento === "g"){
                                 /*Llamando al elemento meta para dibujarla en el canvas*/
