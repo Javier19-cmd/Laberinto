@@ -60,8 +60,6 @@ h2{
     margin: 1px;
 }
 
-/*Propiedades de la puerta*/
-.Puertas{
-    width: 75px; /*Ancho*/
-    height: 75px; /*Alto*/
+.Mov{
+    text-indent: 80%;
 }
