@@ -59,7 +59,7 @@ function Laberinto () {
 
    //Función del movimiento.
 
-    const mov = (e) =>{
+    const mov = React.useCallback((e) =>{
 
         if(e.key === "ArrowLeft"){
             //setPosx((oldPosx) => oldPosx - 1)
@@ -76,14 +76,14 @@ function Laberinto () {
             const indexX = Math.ceil((lpixelx/75) - 1) //Posición en x.
             const indexY = Math.ceil((lpixely/75)) //Posición en y.
 
-            console.log("Este es el maze cuando se presiona el botón de la izquierda: ", maze)
+            ///console.log("Este es el maze cuando se presiona el botón de la izquierda: ", maze)
 
             //console.log(maze, indexX, indexY) //Posición del personaje en el maze.
-            console.log(lpixelx)               //Posición inicial del personaje en x. 
+            //console.log(lpixelx)               //Posición inicial del personaje en x. 
 
-            console.log(lpixely)               //Posición del personaje ne y.
+            //console.log(lpixely)               //Posición del personaje ne y.
               
-            console.log("Datos del lab", maze)
+            //console.log("Datos del lab", maze)
 
             /*Detectando la flecha izquierda para poder mover al personaje*/
             console.log("Izquierda")
@@ -95,11 +95,11 @@ function Laberinto () {
             //setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
             
             //Viendo si hay un espacio vacío.
-            if (maze[indexX][indexY] === ' '){
-                //setPosx((oldPosx) => oldPosx - 1)
-                setPosx(lpixelx - 1) //Moviendo al personaje hacia la izquierda.
-            }else if(maze[indexX][indexY] === 'g'){
-                alert("Ganaste!")
+            if(maze[posy][posx - 1] === ' '){
+                setPosx(posx - 1) //Moviendo al personaje hacia la izquierda.
+                console.log("Hola")
+            }else if(maze[posy][posx - 1] === '|' || maze[posy][posx - 1] === '+' || maze[posy][posx - 1] === '-'){
+                console.log("Puta madre")
             }
 
         }else if(e.key === "ArrowRight"){
@@ -163,7 +163,7 @@ function Laberinto () {
                 alert("Ganaste!")
             }
         }
-    }
+    }, [maze])
 
     /*Esta función se encarga de poder hacer los movimeintos del personaje*/
      useEffect(() => {
@@ -171,8 +171,8 @@ function Laberinto () {
         /*Identificando las teclas que se presionan*/
          window.addEventListener("keydown", mov)
 
-         //window.removeEventListener("keydown", mov)
-    }, [])
+         return () => window.removeEventListener("keydown", mov)
+    }, [mov])
     //movimientos() //Llamando al método para detectar los movimientos.
 
     //window.addEventListener("keydown", mov)
