@@ -23,6 +23,8 @@ function Laberinto () {
     //Se inicializa en 1, dado que el jugador está en (1,1)
     const [posx, setPosx] = useState(75)
     const [posy, setPosy] = useState(75)
+
+    console.log(posx)
     
     //useEffect sirve para poder ver efectos secundarios en componentes.
     useEffect(() => {
