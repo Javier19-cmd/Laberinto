@@ -9,10 +9,14 @@ Instalaciones realizadas:
 2. React: npm install react react-dom.
 3. Babel: npm install babel-loader @babel/core @babel/preset-react 
 4. Webpack para correr el código: npm install webpack-dev-server
+
 CSS: 
 5. npm install --save-dev style-loader
 6. npm install -D mini-css-extract-plugin
 7. npm install --save-dev css-loader
+
+Audio:
+8. npm install --save react-audio-player
 
 Otras observaciones: 
 1. En el .gitignore se puso el node_modules, que nunca se tiene que subir.
@@ -36,7 +40,7 @@ const App = () => {
     return(
         <>
             <h1>Laberinto</h1>
-            <Laberinto/>    
+            <Laberinto/>
         </>
     )
 }

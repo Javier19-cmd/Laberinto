@@ -57,7 +57,7 @@ h2{
 .Paredes{
     width: 75px; /*Ancho*/
     height: 75px; /*Alto*/
-    margin: 1px;
+    /*margin: 1px;*/
 }
 
 /*Propiedades de las puertas*/

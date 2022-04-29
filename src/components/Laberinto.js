@@ -11,7 +11,6 @@ import Meta from './Meta.js'
 import Jugador from './Jugador.js'
 import Puerta from './Puerta.js'
 
-
 function Laberinto () {
     
     //API: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
@@ -108,7 +107,7 @@ function Laberinto () {
             //Posición del personaje en x.
             const lpixelx = posx + 1
 
-            console.log({lpixelx})
+            //console.log({lpixelx})
             //Posición del personaje en y.
             const lpixely = posy 
 
@@ -116,15 +115,17 @@ function Laberinto () {
             const indexX = Math.ceil((lpixelx/75)) //Posición en x.
             const indexY = Math.ceil((lpixely/75)) //Posición en y.
 
+            console.log("Derecha")
+
             
             /*Detectando la flecha derecha para poder mover al personaje*/
-            console.log("Derecha", indexX, indexY)
+            //console.log("Derecha", indexX, indexY)
 
             //setPosx(posx + 1) //Haciendo set del movimiento hacia la derecha.
 
             //setPosx((oldPosx) => oldPosx + 1) //Haciendo set del movimiento hacia la derecha.
 
-            console.log('ww',maze[indexX][indexY],maze)
+            //console.log('ww',maze[indexX][indexY],maze)
 
             //Viendo si hay un espacio vacío.
             if(maze[indexX][indexY] === ' '){
@@ -240,7 +241,7 @@ function Laberinto () {
         <div className="Maze"> {/*Padre de todos los div's*/}
             {/*Devolviendo un map que va a imprimir cada elemento del laberinto*/}
             <h2>Ahora trata de llegar a la meta</h2> {/*Imprimiendo en pantalla un título h2 para indicar que se está imprimiendo el laberinto*/}
-
+            {/*Reproductor de audio*/}
             <div className='Mapa'> {/*Se mapea la matriz de laberinto y luego se mapea cada matriz que hay dentro de la matriz grande.*/}
                 { /*Jalando todos los objetos de la matriz devuelta por el fetch*/
                     maze.map((elementos) => 
