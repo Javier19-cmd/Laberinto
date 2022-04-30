@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "lint": "eslint src/**"
   },
   "repository": {
     "type": "git",
