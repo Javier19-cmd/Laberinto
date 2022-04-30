@@ -2,7 +2,7 @@
 // Carnet: 20159
 
 import React from 'react'
-import pared from './pared.svg'
+import pared from './Pared.jpg'
 
 // Función que procesa los elementos y los manda a la pantalla. Este lee a todas las paredes.
 function Paredes(){
