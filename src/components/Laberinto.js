@@ -177,65 +177,56 @@ function Laberinto () {
                 alert("Ganaste!")
             }
 
-        }else if(e.key === "ArrowUp"){
-            
-            //  setPosx((oldPosx) => oldPosx - 1)
-            
-            //  Posición inicial del personaje.
+    } else if (e.key === 'ArrowUp') {
+      //  setPosx((oldPosx) => oldPosx - 1)
+      //  Posición inicial del personaje.
+      //  Menos uno de la posición en x del personaje.
+      //  Posición del personaje en x.
+      const lpixelx = posx
 
-            //  Menos uno de la posición en x del personaje. 
-            //  Posición del personaje en x.
-            const lpixelx = posx
+      console.log(lpixelx)
+      //  Posición del personaje en y.
+      const lpixely = posy - 1
 
-            console.log(lpixelx)
-            //  Posición del personaje en y.
-            const lpixely = posy - 1
+      //  Obteniendo la posición del personaje en el maze.
+      const indexX = Math.ceil((lpixelx / 75)) // Posición en x.
+      const indexY = Math.ceil((lpixely / 75)) // Posición en y.
 
-            //  Obteniendo la posición del personaje en el maze.
-            const indexX = Math.ceil((lpixelx/75)) // Posición en x.
-            const indexY = Math.ceil((lpixely/75)) // Posición en y.
+      //  console.log("Este es el maze cuando se presiona el botón de la izquierda: ", maze)
+      //  console.log(maze, indexX, indexY) //Posición del personaje en el maze.
+      //  console.log(lpixelx) //Posición inicial del personaje en x.
+      //  console.log(lpixely) //Posición del personaje ne y.
+      //  console.log("Datos del lab", maze)
 
-            //  console.log("Este es el maze cuando se presiona el botón de la izquierda: ", maze)
+      /*  Detectando la flecha izquierda para poder mover al personaje  */
+      console.log("Arriba")
 
-            //  console.log(maze, indexX, indexY) //Posición del personaje en el maze.
-            //  console.log(lpixelx)               //Posición inicial del personaje en x. 
+      //  setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda
+      //  setPosx(indexX)
+      //  setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
+      //  Viendo si hay un espacio vacío.
+      if (maze[indexX][indexY] === ' ') {
+        setPosy((oldPosy) => oldPosy - 10) //   Moviendo al personaje hacia la izquierda.
+      }else if(maze[indexX][indexY] === 'g'){
+        alert("Ganaste")
+      }
+    }
+  }, [maze, posx, posy])
 
-            //  console.log(lpixely)               //Posición del personaje ne y.
-              
-            //  console.log("Datos del lab", maze)
+  /* Esta función se encarga de poder hacer los movimeintos del personaje */
+  useEffect(() => {
+    // Event Listener de la ventana.
+    /* Identificando las teclas que se presionan */
+    window.addEventListener('keydown', mov)
 
-            /*  Detectando la flecha izquierda para poder mover al personaje  */
-            console.log("Arriba")
-        
-            //  setPosx(posx - 1) //Haciendo set del movimiento hacia la izquierda
-
-            //  setPosx(indexX)
-
-            //  setPosx((oldPosx) => oldPosx - 1) //Haciendo set del movimiento hacia la derecha.
-            
-            //  Viendo si hay un espacio vacío.
-            if(maze[indexX][indexY] === ' '){
-              setPosy((oldPosy) => oldPosy - 10) //   Moviendo al personaje hacia la izquierda.
-            }else if(maze[indexX][indexY] === 'g'){
-                alert("Ganaste")
-            } 
-        }
-    }, [maze, posx, posy])
-
-    /*Esta función se encarga de poder hacer los movimeintos del personaje*/
-     useEffect(() => {
-        //Event Listener de la ventana.
-        /*Identificando las teclas que se presionan*/
-         window.addEventListener("keydown", mov)
-
-         return () => window.removeEventListener("keydown", mov)
-    }, [mov])
+    return () => window.removeEventListener('keydown', mov)
+  }, [mov])
   //    movimientos() //Llamando al método para detectar los movimientos.
 
   //    window.addEventListener("keydown", mov)
 
   //    console.log("Laberinto luego del event listener: ",maze)
-    return(
+  return(
       <div className="Maze"> {/*Padre de todos los div's*/}
         {/* Devolviendo un map que va a imprimir cada elemento del laberinto */}
         <h2>Ahora trata de llegar a la meta</h2> {/*Título*/}
@@ -270,13 +261,13 @@ function Laberinto () {
                               </>
                           }
                           if(elemento === "g"){
-                              /*Llamando al elemento meta para dibujarla en el canvas*/
-                              return <Meta
-                                  key={Math.random()}
-                              />                      
-                          }
-                          return
-                      })}
+                              /* Llamando al elemento meta para dibujarla en el canvas */
+                            return <Meta
+                              key={Math.random()}
+                              />
+                        }
+                      })
+                      }
                     </div>)
                       }
 
