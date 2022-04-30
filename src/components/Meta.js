@@ -8,11 +8,10 @@ import Metas from './Metas.jpg'
 function Meta() {
   return (
     <div className="Meta">
-      
-      <img className="Metas" src={Metas} alt="Meta"/>
+      <img className="Metas" src={Metas} alt="Meta" />
 
     </div>
-    )
+  )
 }
 
 export default Meta
