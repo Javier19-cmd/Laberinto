@@ -176,44 +176,44 @@ function Laberinto() {
       <div className="Mapa">
         {/* Se hace un doble map a la matriz de maze. */}
         { /* Jalando todos los objetos de la matriz devuelta por el fetch */
-              maze.map((elementos) =>
-              /* Entrando a la matriz que se trae desde el API */
-                <div className="Todo" key={Math.random()}>{
-                  elementos.map((elemento) => {
-                    /* Leyendo cada elemento de la matriz que se trae desde el API */
-                    if (elemento === '-' || elemento === '|' || elemento === '+') {
-                      //    Detectando paredes y suelos
-                      return <Paredes
-                              key = {Math.random()}
-                              /> 
-                      } if (elemento === ' ') {
-                          /*Llamando al elemento otro para dibujar un espacio vacío en el canvas*/
-                          return <Otro 
-                                  key={Math.random()}
-                                  />
-                      } if (elemento === 'p') {
-                          return <>
-                            <Jugador
-                                  key={Math.random()}
-                                  x={parseInt(posx, 10)} /*Se parsea a entero para que no se pase como string*/
-                                  y={parseInt(posy, 10)} /*Se parsea a entero para que no se pase como string*/
+          maze.map((elementos) =>
+          /* Entrando a la matriz que se trae desde el API */
+            <div className="Todo" key={Math.random()}>{
+              elementos.map((elemento) => {
+                /* Leyendo cada elemento de la matriz que se trae desde el API */
+                if (elemento === '-' || elemento === '|' || elemento === '+') {
+                  //    Detectando paredes y suelos
+                  return <Paredes
+                          key = {Math.random()}
+                          /> 
+                  } if (elemento === ' ') {
+                      /*Llamando al elemento otro para dibujar un espacio vacío en el canvas*/
+                      return <Otro 
+                              key={Math.random()}
                               />
-                              {/*Creando puerta de salida*/}
-                              <Puerta
-                                  key = {Math.random()}
-                              />
-                          </>
-                      }
-                      if (elemento === 'g') {
-                          /* Llamando al elemento meta para dibujarla en el canvas */
-                        return <Meta
-                          key={Math.random()}
+                  } if (elemento === 'p') {
+                      return <>
+                        <Jugador
+                              key={Math.random()}
+                              x={parseInt(posx, 10)} /*Se parsea a entero para que no se pase como string*/
+                              y={parseInt(posy, 10)} /*Se parsea a entero para que no se pase como string*/
                           />
-                    }
-                  })
+                          {/*Creando puerta de salida*/}
+                          <Puerta
+                              key = {Math.random()}
+                          />
+                      </>
                   }
-                </div>)
+                  if (elemento === 'g') {
+                      /* Llamando al elemento meta para dibujarla en el canvas */
+                    return <Meta
+                      key={Math.random()}
+                      />
                 }
+              })
+              }
+            </div>)
+            }
 
           </div>
       </div>
