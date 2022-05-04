@@ -176,7 +176,8 @@ function Laberinto() {
         {/* Se hace un doble map a la matriz de maze. */}
         { /* Jalando todos los objetos de la matriz devuelta por el fetch */
           maze.map((elementos) =>
-            <div className="Todo" key={Math.random()}>{
+            <div className="Todo" key={Math.random()}>
+              {
               elementos.map((elemento) => {
                 /* Leyendo cada elemento de la matriz que se trae desde el API */
                 if (elemento === '-' || elemento === '|' || elemento === '+') {
