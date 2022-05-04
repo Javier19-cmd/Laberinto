@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "lint": "eslint src/**/*.jsx"
   },
   "repository": {
