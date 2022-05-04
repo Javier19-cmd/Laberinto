@@ -17,7 +17,6 @@ function Laberinto() {
   //  Se inicializa en 1, dado que el jugador está en (1,1)
   const [posx, setPosx] = useState(75)
   const [posy, setPosy] = useState(75)
-  const style = styles //Declaración temporal.
   console.log(posx)
   //  useEffect sirve para poder ver efectos secundarios en componentes.
   useEffect(() => {
@@ -98,7 +97,6 @@ function Laberinto() {
       //  Posición del personaje en x.
       const lpixelx = posx
       console.log(lpixelx)
-      //  Posición del personaje en y.
       const lpixely = posy + 1
       //  Obteniendo la posición del personaje en el maze.
       const indexX = Math.ceil((lpixelx / 75)) // Posición en x.
@@ -169,7 +167,7 @@ function Laberinto() {
 
   //    console.log("Laberinto luego del event listener: ",maze)
   return (
-    <div className="Maze">
+    <div className="Maze" style={styles}>
       {/* Padre de todos los div's */ }
       {/* Devolviendo un map que va a imprimir cada elemento del laberinto */}
       <h2>Ahora trata de llegar a la meta</h2>
