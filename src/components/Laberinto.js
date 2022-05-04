@@ -175,7 +175,7 @@ function Laberinto() {
       <div className="Mapa">
         {/* Se hace un doble map a la matriz de maze. */}
         { /* Jalando todos los objetos de la matriz devuelta por el fetch */
-          maze.map((elementos) => {
+          maze.map((elementos) => (
             <div className="Todo" key={Math.random()}>
               {
               elementos.map((elemento) => {
@@ -217,14 +217,12 @@ function Laberinto() {
                     />
                   )
                 }
-                return elemento /* Regresando cada elemento del map */
+                return elemento
               })
               }
             </div>
-            return elementos /* Regresando cada elemento del map */
-          })
+          ))
           }
-
       </div>
     </div>
   )
