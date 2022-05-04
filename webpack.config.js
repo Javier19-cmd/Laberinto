@@ -1,11 +1,13 @@
 //Configuración del webpack
 export default{
   mode: 'production',
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     filename: 'bundle.js',
   },
-
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   //Creando configuración para el servidor.
   devServer: {
     static: {

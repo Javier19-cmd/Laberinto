@@ -2,11 +2,12 @@
   "name": "otrosejemplos_react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
+  "type": "module",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint src/**/*.jsx"
   },
   "repository": {
     "type": "git",
