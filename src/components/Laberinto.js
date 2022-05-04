@@ -2,11 +2,11 @@
 //  Carnet: 20159
 import React, { useState, useEffect } from 'react'
 import styles from './Laberinto.css'
-import Paredes from './Pared.js'
-import Otro from './Otro.js'
-import Meta from './Meta.js'
-import Jugador from './Jugador.js'
-import Puerta from './Puerta.js'
+import Paredes from './Pared'
+import Otro from './Otro'
+import Meta from './Meta'
+import Jugador from './Jugador'
+import Puerta from './Puerta'
 
 function Laberinto() {
   //  API: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
@@ -175,7 +175,7 @@ function Laberinto() {
       <div className="Mapa">
         {/* Se hace un doble map a la matriz de maze. */}
         { /* Jalando todos los objetos de la matriz devuelta por el fetch */
-          maze.map((elementos) =>
+          maze.map((elementos) => {
             <div className="Todo" key={Math.random()}>
               {
               elementos.map((elemento) => {
@@ -217,11 +217,13 @@ function Laberinto() {
                     />
                   )
                 }
-                return elemento
+                return elemento /* Regresando cada elemento del map */
               })
               }
-            </div>)
-            }
+            </div>
+            return elementos /* Regresando cada elemento del map */
+          })
+          }
 
       </div>
     </div>

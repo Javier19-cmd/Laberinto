@@ -1,6 +1,6 @@
 //Configuración del webpack
 export default{
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
@@ -28,7 +28,7 @@ export default{
     {
       type: 'asset',
       test: /\.(png|svg|jpg|jpeg|gif)$/i
-    }
+    },
     ]
   }
 }

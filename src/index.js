@@ -3,7 +3,7 @@
 
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client' //  Importando el ReactDOMClient.
-import Laberinto from './components/Laberinto.js'
+import Laberinto from './components/Laberinto'
 
 function App() {
   return (

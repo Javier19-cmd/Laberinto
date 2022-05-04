@@ -1,10 +1,11 @@
 //  Nombre: Javier Valle
 //  Carnet: 20159
 import React from 'react'
+import PropTypes from 'prop-types'
 import Personaje from './Personaje.jpg'
 
 // Función que procesa los elementos y los manda a la pantalla. Este lee al elemento del jugador.
-export default function Jugador({ x, y }) {
+function Jugador({ x, y }) {
   const style = {
     position: 'absolute',
     left: `${x}px`,
@@ -19,3 +20,10 @@ export default function Jugador({ x, y }) {
     <img className="Heroe" src={Personaje} style={style} alt="Héroe" />
   )
 }
+
+Jugador.propTypes = {
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+}
+
+export default Jugador
