@@ -21,22 +21,29 @@ body{
 
 /*Propiedades del título de la página*/
 h1{
-    text-indent: 48.5%;/*Indentando el título*/
+    /*Centrar el título*/
+    text-align: center;
     color:gold; /*Color del texto*/
 }
 
 /*Propiedades del título h2*/
 h2{
-    text-indent: 44%;/*Indentando el título*/
+    /*Centrar el título*/
+    text-align: center;
     color:gold; /*Color del texto*/
+}
+
+.Todo{
+    position: relative; /*Posición absoluta*/
 }
 
 /*Propiedades del mapa*/
 .Mapa{
     /*Posición absoluta para que se puedan manipular mejor los objetos*/
-    position: absolute;
+    position: relative;
     /*Display flex para mejor comodidad*/
     display: flex;
+    justify-content: center;
 }
 
 /*Propiedades del jugador.*/
@@ -55,14 +62,12 @@ h2{
 }
 
 /*Propiedades del jugador*/
-/*.Jugador{
-    
- /*   width: 75px; /*Ancho*/
-   /* height: 75px; /*Altura*/
-    /*background: blue; /*Color*/
-   /* margin: 2px; /*Margen del cinco pixeles*/
-
-/*}
+.Jugador{    
+    width: 75px; /*Ancho*/
+    height: 75px; /*Altura*/
+    background: blue; /*Color*/
+    /* margin: 2px; /*Margen del cinco pixeles*/
+}
 
 /*Propiedades de la meta*/
 .Meta{
