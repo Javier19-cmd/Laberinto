@@ -1,6 +1,7 @@
 //  Nombre: Javier Valle
 //  Carnet: 20159
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import styles from './Laberinto.css'
 import Paredes from './Pared'
 import Otro from './Otro'
@@ -8,7 +9,7 @@ import Meta from './Meta'
 import Jugador from './Jugador'
 import Puerta from './Puerta'
 
-function Laberinto() {
+function Laberinto({ ancho, alto }) {
   //  API: https://maze.juanelcaballo.club/?type=json&w=4&h=4.
   //  useState sirve para modificar el estado de un componente.
   const [maze, setMaze] = useState([]) // Array vacío para el laberinto.
@@ -24,7 +25,7 @@ function Laberinto() {
     const obtenerLaberinto = () => {
       /*  Link del API: https://maze.juanelcaballo.club/?type=json&w=4&h=4  */
       //  Trayendo el laberinto desde el API.
-      const url = 'https://maze.juanelcaballo.club/?type=json&w=4&h=4' //  Url del API.
+      const url = `https://maze.juanelcaballo.club/?type=json&w=${ancho}&h=${alto}` //  Url del API.
       //  Pedido con fetch.
       fetch(url)
         .then((res) => res.json())
@@ -227,6 +228,11 @@ function Laberinto() {
       </div>
     </div>
   )
+}
+
+Laberinto.propTypes = {
+  alto: PropTypes.number.isRequired,
+  ancho: PropTypes.number.isRequired,
 }
 
 export default Laberinto

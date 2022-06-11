@@ -3,13 +3,13 @@
 
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client' //  Importando el ReactDOMClient.
-import Laberinto from './components/Laberinto'
+import Tamanos from './components/Tamanos'
 
 function App() {
   return (
     <div>
       <h1>Laberinto</h1>
-      <Laberinto />
+      <Tamanos />
     </div>
   )
 }
