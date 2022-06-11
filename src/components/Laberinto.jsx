@@ -169,9 +169,10 @@ function Laberinto() {
   return (
     <div className="Maze" style={styles}>
       {/* Padre de todos los div's */ }
-      {/* Devolviendo un map que va a imprimir cada elemento del laberinto */}
-      <h2>Ahora trata de llegar a la meta</h2>
       {/* Título */}
+      <h2>Ahora trata de llegar a la meta</h2>
+      <h3>Si en caso el personaje empieza trabado en una pared, entonces recarga la página</h3>
+      {/* Devolviendo un map que va a imprimir cada elemento del laberinto */}
       <div className="Mapa">
         {/* Se hace un doble map a la matriz de maze. */}
         { /* Jalando todos los objetos de la matriz devuelta por el fetch */
