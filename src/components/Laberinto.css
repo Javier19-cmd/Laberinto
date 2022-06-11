@@ -56,7 +56,7 @@ h3{
 /*Propiedades del jugador.*/
 .Pared{
     width: 75px; /*Ancho de prueba*/
-    height: 75px; /*Se ve limitado por el min-height del parent, el cual es el .Mapa*/ 
+    height: 75px; /*Alto de la pared*/ 
     background: white; /*Ancho*/
     /*margin: 2px; /*Margen*/
 }
@@ -71,11 +71,10 @@ h3{
 
 /*Propiedades de la meta*/
 .Meta{
-    
     width: 75px; /*Ancho*/
     height: 75px; /*Alto*/
     /*background: red; /*Color*/
-     /*margin: 2px; /*Ancho*/
+    /*margin: 2px; /*Ancho*/
 }
 
 /*Tamaños de la imagen de la Meta*/
@@ -94,6 +93,7 @@ h3{
 
 /*Propiedades de las puertas*/
 .Puertas{
+    position: relative;
     width: 75px;
     height: 75px;
 }

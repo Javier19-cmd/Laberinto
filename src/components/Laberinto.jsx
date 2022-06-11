@@ -15,7 +15,7 @@ function Laberinto() {
   //  setLaberinto permite actualizar el estado del laberinto.
   /*  Estados para las posiciones 'x' y 'y' */
   //  Se inicializa en 1, dado que el jugador está en (1,1)
-  const [posx, setPosx] = useState(75)
+  const [posx, setPosx] = useState(0.5)
   const [posy, setPosy] = useState(75)
   console.log(posx)
   //  useEffect sirve para poder ver efectos secundarios en componentes.
@@ -171,7 +171,7 @@ function Laberinto() {
       {/* Padre de todos los div's */ }
       {/* Título */}
       <h2>Ahora trata de llegar a la meta</h2>
-      <h3>Si en caso el personaje empieza trabado en una pared, entonces recarga la página</h3>
+      <h3>Para empezar el juego, primero debes mover hacia abajo el personaje y luego desplazarte como quieras</h3>
       {/* Devolviendo un map que va a imprimir cada elemento del laberinto */}
       <div className="Mapa">
         {/* Se hace un doble map a la matriz de maze. */}
@@ -198,12 +198,12 @@ function Laberinto() {
                 } if (elemento === 'p') {
                   return (
                     <div>
+                      {/*El jugador debe aparecer encima de la puerta*/}
                       <Jugador
                         key={Math.random()}
                         x={parseInt(posx, 10)} /* Parsing a entero para que no sea string */
                         y={parseInt(posy, 10)} /* Parsing a entero para que no sea string */
                       />
-                      {/* Creando puerta de salida */}
                       <Puerta
                         key={Math.random()}
                       />

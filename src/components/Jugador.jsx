@@ -13,7 +13,6 @@ function Jugador({ x, y }) {
     width: '75px', /* Ancho */
     height: '75px', /* Altura */
     background: 'blue', /* Color */ // Este se va a dejar por si no llegara cargar la imagen del personaje.
-    margin: '2px', /* Margen del cinco pixeles */
   }
 
   return (
