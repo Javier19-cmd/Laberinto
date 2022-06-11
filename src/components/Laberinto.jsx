@@ -171,7 +171,7 @@ function Laberinto() {
       {/* Padre de todos los div's */ }
       {/* Título */}
       <h2>Ahora trata de llegar a la meta</h2>
-      <h3>Para empezar el juego, primero debes mover hacia abajo el personaje y luego desplazarte como quieras</h3>
+      <h3>Primero debes mover hacia abajo el personaje y luego desplazarte como quieras</h3>
       {/* Devolviendo un map que va a imprimir cada elemento del laberinto */}
       <div className="Mapa">
         {/* Se hace un doble map a la matriz de maze. */}
@@ -198,7 +198,7 @@ function Laberinto() {
                 } if (elemento === 'p') {
                   return (
                     <div>
-                      {/*El jugador debe aparecer encima de la puerta*/}
+                      {/* El jugador debe aparecer encima de la puerta */}
                       <Jugador
                         key={Math.random()}
                         x={parseInt(posx, 10)} /* Parsing a entero para que no sea string */
